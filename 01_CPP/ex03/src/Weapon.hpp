@@ -6,7 +6,7 @@
 /*   By: vhappenh <vhappenh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/28 14:53:32 by vhappenh          #+#    #+#             */
-/*   Updated: 2023/06/29 13:53:23 by vhappenh         ###   ########.fr       */
+/*   Updated: 2023/07/11 16:45:37 by vhappenh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ private:
 public:
 	Weapon(std::string type);
 	~Weapon(void);
-	std::string getType() const;
+	const std::string getType();
 	void setType(std::string type);
 } ;
 
