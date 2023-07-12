@@ -6,7 +6,7 @@
 /*   By: vhappenh <vhappenh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 18:36:32 by vhappenh          #+#    #+#             */
-/*   Updated: 2023/07/12 13:38:07 by vhappenh         ###   ########.fr       */
+/*   Updated: 2023/07/12 13:49:41 by vhappenh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,10 @@ int main(int ac, char **av)
 			pos = 0;
 			if (writefile.is_open())
 			{
-				while (pos < line.length() - 1 && pos != std::string::npos)
+				while (pos < line.length() - 1)
 				{
 					pos = line.find(str1, pos);
-					if (pos != 0)
+					if (pos != 0 && !(pos > line.length()))
 					{
 						line.erase(pos, str1.length());
 						line.insert(pos, str2);

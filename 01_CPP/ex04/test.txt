@@ -1,5 +1,0 @@
-Hello, this is a 
-testfile
-from 
-which 
-I want to read.
