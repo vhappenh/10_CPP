@@ -6,7 +6,7 @@
 /*   By: vhappenh <vhappenh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 18:36:32 by vhappenh          #+#    #+#             */
-/*   Updated: 2023/07/12 13:49:41 by vhappenh         ###   ########.fr       */
+/*   Updated: 2023/07/12 13:53:41 by vhappenh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,5 +56,9 @@ int main(int ac, char **av)
 		writefile.close();
     }
     else
+    {
         std::cout << "Error when opening readfile" << std::endl;
+        return (1);
+    }
+    return (0);
 }
