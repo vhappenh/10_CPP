@@ -1,43 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Fixed.cpp                                          :+:      :+:    :+:   */
+/*   FixedFunctions.cpp                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vhappenh <vhappenh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/15 12:27:53 by vhappenh          #+#    #+#             */
-/*   Updated: 2023/07/16 12:21:49 by vhappenh         ###   ########.fr       */
+/*   Created: 2023/07/16 13:33:13 by vhappenh          #+#    #+#             */
+/*   Updated: 2023/07/16 14:23:43 by vhappenh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
-
-Fixed::Fixed(void)
-{
-	this->_value = 0;
-	std::cout << "Default constructor called" << std::endl;
-}
-
-Fixed::Fixed(const Fixed& other)
-{
-	this->_value = other._value;
-	std::cout << "Copy constructor called" << std::endl;
-}
-
-Fixed& Fixed::operator=(const Fixed& other)
-{
-    std::cout << "Copy assignment operator called" << std::endl;
-    if (this != &other)
-    {
-        _value = other._value;
-    }
-    return *this;
-}
-
-Fixed::~Fixed(void)
-{
-	std::cout << "Destructor called" << std::endl;
-}
 
 int Fixed::getRawBits() const
 {
@@ -49,4 +22,14 @@ void Fixed::setRawBits(int const raw)
 {
     std::cout << "setRawBits member function called" << std::endl;
     _value = raw;
+}
+
+float Fixed::toFloat(void) const
+{
+    return ((float)this->_value) / (float)(1 << this->_bits);
+}
+
+int	Fixed::toInt(void) const
+{
+	return ((int)this->_value >> this->_bits);
 }

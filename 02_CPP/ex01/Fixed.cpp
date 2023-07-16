@@ -6,7 +6,7 @@
 /*   By: vhappenh <vhappenh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/15 12:27:53 by vhappenh          #+#    #+#             */
-/*   Updated: 2023/07/16 12:21:49 by vhappenh         ###   ########.fr       */
+/*   Updated: 2023/07/16 14:23:55 by vhappenh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,18 @@ Fixed::Fixed(void)
 {
 	this->_value = 0;
 	std::cout << "Default constructor called" << std::endl;
+}
+
+Fixed::Fixed(const int num)
+{
+	this->_value = num << this->_bits;
+	std::cout << "Int constructor called" << std::endl;
+}
+
+Fixed::Fixed(const float num)
+{
+	this->_value = roundf(num * (float)(1 << this->_bits));
+	std::cout << "Float constructor called" << std::endl;
 }
 
 Fixed::Fixed(const Fixed& other)
@@ -37,16 +49,4 @@ Fixed& Fixed::operator=(const Fixed& other)
 Fixed::~Fixed(void)
 {
 	std::cout << "Destructor called" << std::endl;
-}
-
-int Fixed::getRawBits() const
-{
-    std::cout << "getRawBits member function called" << std::endl;
-    return _value;
-}
-
-void Fixed::setRawBits(int const raw)
-{
-    std::cout << "setRawBits member function called" << std::endl;
-    _value = raw;
 }
