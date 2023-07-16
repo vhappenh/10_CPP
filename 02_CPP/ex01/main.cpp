@@ -6,18 +6,11 @@
 /*   By: vhappenh <vhappenh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/15 12:27:05 by vhappenh          #+#    #+#             */
-/*   Updated: 2023/07/16 14:22:07 by vhappenh         ###   ########.fr       */
+/*   Updated: 2023/07/16 15:58:46 by vhappenh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
-
-
-std::ostream& operator<<(std::ostream& os, const Fixed& blub)
-{
-    std::cout << blub.toFloat();
-    return os;
-}
 
 int	main(void)
 {

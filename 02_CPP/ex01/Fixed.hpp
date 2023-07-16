@@ -6,7 +6,7 @@
 /*   By: vhappenh <vhappenh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/15 12:27:57 by vhappenh          #+#    #+#             */
-/*   Updated: 2023/07/16 13:34:17 by vhappenh         ###   ########.fr       */
+/*   Updated: 2023/07/16 18:38:19 by vhappenh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,7 @@ public:
 	float 	toFloat(void) const;
 	int		toInt(void) const;
 } ;
+
+std::ostream& operator<<(std::ostream& os, const Fixed& other);
 
 #endif

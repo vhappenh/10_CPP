@@ -6,7 +6,7 @@
 /*   By: vhappenh <vhappenh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 13:33:13 by vhappenh          #+#    #+#             */
-/*   Updated: 2023/07/16 14:23:43 by vhappenh         ###   ########.fr       */
+/*   Updated: 2023/07/16 18:38:21 by vhappenh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,10 @@ float Fixed::toFloat(void) const
 int	Fixed::toInt(void) const
 {
 	return ((int)this->_value >> this->_bits);
+}
+
+std::ostream& operator<<(std::ostream& os, const Fixed& other)
+{
+    std::cout << other.toFloat();
+    return os;
 }
