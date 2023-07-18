@@ -6,7 +6,7 @@
 /*   By: vhappenh <vhappenh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/15 12:27:57 by vhappenh          #+#    #+#             */
-/*   Updated: 2023/07/16 19:03:06 by vhappenh         ###   ########.fr       */
+/*   Updated: 2023/07/18 13:28:41 by vhappenh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ private:
 	int	_value;
 	static const int _bits = 8;
 public:
+	/* constructor / deconstructor */
 	Fixed(void);
 	Fixed(const int num);
 	Fixed(const float num);
@@ -29,6 +30,7 @@ public:
 	Fixed& operator=(const Fixed& other);	
 	~Fixed(void);
 	
+	/* functions */
 	int 	getRawBits(void) const;
 	void 	setRawBits(int const raw);
 	float 	toFloat(void) const;
@@ -49,8 +51,16 @@ public:
 	Fixed operator/(const Fixed& other) const;
 
 	/* increment / decrement */
-	//void operator++(const Fixed& other);
-	//void operator--(const Fixed& other);
+	Fixed operator++(int);
+	Fixed operator--(int);
+	Fixed operator++();
+	Fixed operator--();
+
+	/* min / max */
+	Fixed& min(Fixed& one, Fixed& two);
+	Fixed& min(const Fixed& one, const Fixed& two);
+	Fixed& max(Fixed& one, Fixed& two);
+	Fixed& max(const Fixed& one, const Fixed& two);
 } ;
 
 std::ostream& operator<<(std::ostream& os, const Fixed& other);

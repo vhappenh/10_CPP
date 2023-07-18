@@ -10,7 +10,6 @@ vpath %.cpp src
 
 SRC := main.cpp\
 		Fixed.cpp\
-		FixedFunctions.cpp
 
 OBJ := $(SRC:%.cpp=$(OBJ_P)%.o)
 
