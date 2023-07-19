@@ -6,7 +6,7 @@
 /*   By: vhappenh <vhappenh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/15 12:27:57 by vhappenh          #+#    #+#             */
-/*   Updated: 2023/07/18 13:28:41 by vhappenh         ###   ########.fr       */
+/*   Updated: 2023/07/19 11:58:47 by vhappenh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,13 +57,12 @@ public:
 	Fixed operator--();
 
 	/* min / max */
-	Fixed& min(Fixed& one, Fixed& two);
-	Fixed& min(const Fixed& one, const Fixed& two);
-	Fixed& max(Fixed& one, Fixed& two);
-	Fixed& max(const Fixed& one, const Fixed& two);
+	static Fixed& min(Fixed& one, Fixed& two);
+	static const Fixed& min(const Fixed& one, const Fixed& two);
+	static Fixed& max(Fixed& one, Fixed& two);
+	static const Fixed& max(const Fixed& one, const Fixed& two);
 } ;
 
 std::ostream& operator<<(std::ostream& os, const Fixed& other);
-
 
 #endif
