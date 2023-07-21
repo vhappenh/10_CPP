@@ -1,45 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScavTrap.cpp                                       :+:      :+:    :+:   */
+/*   FragTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vhappenh <vhappenh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/21 11:41:44 by vhappenh          #+#    #+#             */
-/*   Updated: 2023/07/21 14:26:37 by vhappenh         ###   ########.fr       */
+/*   Created: 2023/07/21 14:19:48 by vhappenh          #+#    #+#             */
+/*   Updated: 2023/07/21 14:28:42 by vhappenh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScavTrap.hpp"
+#include "FragTrap.hpp"
 
-ScavTrap::ScavTrap(std::string name)
+FragTrap::FragTrap(std::string name)
 {
 	this->_name = name;
 	this->_hp = 100;
-	this->_energy = 50;
-	this->_ad = 20;
-	std::cout << "ScavTrap Constructor called!" << std::endl;
+	this->_energy = 100;
+	this->_ad = 30;
+	std::cout << "FragTrap Constructor called!" << std::endl;
 }
 
-ScavTrap::~ScavTrap(void)
+FragTrap::~FragTrap(void)
 {
-	std::cout << "ScavTrap Deconstructor called!" << std::endl;
+	std::cout << "FragTrap Deconstructor called!" << std::endl;
 }
 
-void ScavTrap::guardGate()
+void FragTrap::highFivesGuys(void)
 {
-	std::cout << "ScavTrap " << this->_name
-		<< " is now in Gate keeper mode." << std::endl;
+	std::cout << "FragTrap " << this->_name
+		<< " gives you a high five." << std::endl;
 }
 
-void ScavTrap::attack(const std::string& target)
+void FragTrap::attack(const std::string& target)
 {
 	if (this->_energy > 0)
 	{
-		std::cout << "ScavTrap " << this->_name << " attacks " << target
+		std::cout << "FragTrap " << this->_name << " attacks " << target
 			<< ", causing " << this->_ad << " points of damage!" << std::endl;
 		this->_energy--;
 	}
 	else
-		std::cout << "ScavTrap " << this->_name << " can't attack. No energy left!" << std::endl;
+		std::cout << "FragTrap " << this->_name << " can't attack. No energy left!" << std::endl;
 }

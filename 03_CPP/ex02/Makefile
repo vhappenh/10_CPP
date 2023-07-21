@@ -9,7 +9,9 @@ OBJ_P := ./obj/
 vpath %.cpp src
 
 SRC := main.cpp\
-		Fixed.cpp
+		ClapTrap.cpp\
+		ScavTrap.cpp\
+		FragTrap.cpp
 
 OBJ := $(SRC:%.cpp=$(OBJ_P)%.o)
 

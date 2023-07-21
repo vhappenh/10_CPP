@@ -1,29 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vhappenh <vhappenh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/20 14:39:57 by vhappenh          #+#    #+#             */
-/*   Updated: 2023/07/21 14:26:44 by vhappenh         ###   ########.fr       */
+/*   Created: 2023/07/21 11:41:37 by vhappenh          #+#    #+#             */
+/*   Updated: 2023/07/21 14:27:36 by vhappenh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include "ClapTrap.hpp"
-#include "ScavTrap.hpp"
+#ifndef SCAVTRAP_HPP
+# define SCAVTRAP_HPP
+# include <iostream>
+# include "ClapTrap.hpp"
 
-int	main(void)
+class ScavTrap : public ClapTrap
 {
-	ClapTrap trappy;
-	ScavTrap scavvy("Charles");
+public:
+	ScavTrap(std::string name);
+	~ScavTrap(void);
+	void guardGate();
+	void attack(const std::string& target);
+} ;
 
-	trappy.attack("BadBoy");
-	trappy.takeDamage(2);
-	trappy.beRepaired(2);
-	scavvy.attack("BadGirl");
-	scavvy.takeDamage(2);
-	scavvy.beRepaired(2);
-	scavvy.guardGate();					
-	return (0);
-}
+
+#endif
