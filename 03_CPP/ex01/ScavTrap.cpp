@@ -6,7 +6,7 @@
 /*   By: vhappenh <vhappenh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 11:41:44 by vhappenh          #+#    #+#             */
-/*   Updated: 2023/07/21 14:26:37 by vhappenh         ###   ########.fr       */
+/*   Updated: 2023/07/27 13:00:52 by vhappenh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,26 @@ ScavTrap::ScavTrap(std::string name)
 	std::cout << "ScavTrap Constructor called!" << std::endl;
 }
 
+ScavTrap::ScavTrap(const ScavTrap& other)
+{
+	*this = other;
+}
+
+ScavTrap& ScavTrap::operator=(const ScavTrap& other)
+{
+	if (this != &other)
+	{
+		this->_name = other._name;
+		this->_hp = other._hp;
+		this->_energy = other._energy;
+		this->_ad = other._ad;
+	}
+	return (*this);
+}
+
 ScavTrap::~ScavTrap(void)
 {
-	std::cout << "ScavTrap Deconstructor called!" << std::endl;
+	std::cout << "ScavTrap Destructor called!" << std::endl;
 }
 
 void ScavTrap::guardGate()

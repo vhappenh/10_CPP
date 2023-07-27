@@ -6,7 +6,7 @@
 /*   By: vhappenh <vhappenh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 14:40:09 by vhappenh          #+#    #+#             */
-/*   Updated: 2023/07/27 13:00:46 by vhappenh         ###   ########.fr       */
+/*   Updated: 2023/07/27 13:03:49 by vhappenh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ ClapTrap& ClapTrap::operator=(const ClapTrap& other)
 
 ClapTrap::~ClapTrap(void)
 {
-	std::cout << "ClapTrap Destructor called!" << std::endl;
+	std::cout << "ClapTrap Destructor called." << std::endl;
 }
 
 void ClapTrap::attack(const std::string& target)
