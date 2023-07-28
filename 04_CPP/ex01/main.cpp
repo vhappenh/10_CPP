@@ -5,35 +5,34 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: vhappenh <vhappenh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/20 14:39:57 by vhappenh          #+#    #+#             */
-/*   Updated: 2023/07/28 14:07:13 by vhappenh         ###   ########.fr       */
+/*   Created: 2023/07/28 09:42:30 by vhappenh          #+#    #+#             */
+/*   Updated: 2023/07/28 14:58:25 by vhappenh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include "ClapTrap.hpp"
-#include "ClapTrap.hpp"
-#include "ScavTrap.hpp"
-#include "FragTrap.hpp"
+#include "Animal.hpp"
+#include "Dog.hpp"
+#include "Cat.hpp"
+
+#include "WrongAnimal.hpp"
+#include "WrongCat.hpp"
 
 int	main(void)
 {
-	ClapTrap trappy;
-	ScavTrap scavvy("Charles");
-	FragTrap fraggy("Eugene");
+	Animal animal[10];
 	std::cout << std::endl;
-	trappy.attack("BadBoy");
-	trappy.takeDamage(2);
-	trappy.beRepaired(2);
-	std::cout << std::endl;
-	scavvy.attack("BadGirl");
-	scavvy.takeDamage(2);
-	scavvy.beRepaired(2);
-	scavvy.guardGate();
-	std::cout << std::endl;
-	fraggy.attack("BadPeople");
-	fraggy.takeDamage(2);
-	fraggy.beRepaired(2);
-	fraggy.highFivesGuys();
-	std::cout << std::endl;
-	return (0);
+	for (int i = 0; i < 10; i++)
+	{
+		if(i < 5)
+		{
+			animal[i] = Dog();
+			std::cout << std::endl;
+		}
+		else
+		{
+			animal[i] = Cat();
+			std::cout << std::endl;
+		}
+	}
+	return 0;
 }
