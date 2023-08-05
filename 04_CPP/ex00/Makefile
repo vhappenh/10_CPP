@@ -1,6 +1,6 @@
 NAME := animals
 
-CFLAGS := -Wall -Werror -Wextra -std=c++98 -Wshadow -Wno-shadow -MMD -MP
+CFLAGS := -Wall -Werror -Wextra -std=c++98 -MMD -MP
 
 CC := c++ -g
 

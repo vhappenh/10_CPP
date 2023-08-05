@@ -6,7 +6,7 @@
 /*   By: vhappenh <vhappenh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/28 11:28:22 by vhappenh          #+#    #+#             */
-/*   Updated: 2023/07/28 14:16:57 by vhappenh         ###   ########.fr       */
+/*   Updated: 2023/07/30 12:39:20 by vhappenh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,16 +35,6 @@ WrongCat& WrongCat::operator=(const WrongCat& other)
 WrongCat::~WrongCat()
 {
 	std::cout << "WrongCat destructor called" << std::endl;
-}
-
-std::string WrongCat::getType() const
-{
-	return (this->type);
-}
-
-void	WrongCat::setType(const std::string type)
-{
-	this->type = type;
 }
 
 void	WrongCat::makeSound() const

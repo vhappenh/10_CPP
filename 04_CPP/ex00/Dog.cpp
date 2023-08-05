@@ -6,7 +6,7 @@
 /*   By: vhappenh <vhappenh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/28 09:47:11 by vhappenh          #+#    #+#             */
-/*   Updated: 2023/07/28 14:16:35 by vhappenh         ###   ########.fr       */
+/*   Updated: 2023/07/30 12:36:59 by vhappenh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,16 +35,6 @@ Dog& Dog::operator=(const Dog& other)
 Dog::~Dog()
 {
 	std::cout << "Dog destructor called" << std::endl;
-}
-
-std::string Dog::getType() const
-{
-	return (this->type);
-}
-
-void	Dog::setType(const std::string type)
-{
-	this->type = type;
 }
 
 void	Dog::makeSound() const

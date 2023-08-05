@@ -6,7 +6,7 @@
 /*   By: vhappenh <vhappenh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/28 12:37:17 by vhappenh          #+#    #+#             */
-/*   Updated: 2023/07/28 13:41:00 by vhappenh         ###   ########.fr       */
+/*   Updated: 2023/07/30 12:05:38 by vhappenh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 Brain::Brain()
 {
 	for (int i = 0; i < 100; i++)
-		this->ideas[i] = i;
+		this->ideas[i] = "";
 	std::cout << "Brain constructor called" << std::endl;
 }
 

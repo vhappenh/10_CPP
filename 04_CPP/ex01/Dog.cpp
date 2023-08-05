@@ -6,7 +6,7 @@
 /*   By: vhappenh <vhappenh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/28 09:47:11 by vhappenh          #+#    #+#             */
-/*   Updated: 2023/07/28 14:56:48 by vhappenh         ###   ########.fr       */
+/*   Updated: 2023/07/30 12:37:44 by vhappenh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,16 +41,6 @@ Dog::~Dog()
 {
 	std::cout << "Dog destructor called" << std::endl;
 	delete this->brain;
-}
-
-std::string Dog::getType() const
-{
-	return (this->type);
-}
-
-void	Dog::setType(const std::string type)
-{
-	this->type = type;
 }
 
 void	Dog::makeSound() const

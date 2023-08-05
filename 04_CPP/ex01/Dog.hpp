@@ -6,7 +6,7 @@
 /*   By: vhappenh <vhappenh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/28 09:47:15 by vhappenh          #+#    #+#             */
-/*   Updated: 2023/07/28 11:58:06 by vhappenh         ###   ########.fr       */
+/*   Updated: 2023/07/30 12:37:48 by vhappenh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,5 @@ public:
 	Dog& operator=(const Dog& other);
 	~Dog();
 
-	std::string getType() const;
-	void		setType(const std::string type);
 	void		makeSound() const;
 } ;

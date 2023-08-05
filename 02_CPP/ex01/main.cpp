@@ -6,7 +6,7 @@
 /*   By: vhappenh <vhappenh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/15 12:27:05 by vhappenh          #+#    #+#             */
-/*   Updated: 2023/07/16 15:58:46 by vhappenh         ###   ########.fr       */
+/*   Updated: 2023/08/05 13:57:26 by vhappenh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	main(void)
 {
 	Fixed a;
 	Fixed const b( 10 );
-	Fixed const c( 42.42f );
+	Fixed const c( -42.42f );
 	Fixed const d( b );
 	a = Fixed( 1234.4321f );
 

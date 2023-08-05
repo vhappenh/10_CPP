@@ -6,7 +6,7 @@
 /*   By: vhappenh <vhappenh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/28 10:02:20 by vhappenh          #+#    #+#             */
-/*   Updated: 2023/07/28 14:56:57 by vhappenh         ###   ########.fr       */
+/*   Updated: 2023/07/30 12:37:37 by vhappenh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,16 +41,6 @@ Cat::~Cat()
 {
 	std::cout << "Cat destructor called" << std::endl;
 	delete this->brain;
-}
-
-std::string Cat::getType() const
-{
-	return (this->type);
-}
-
-void	Cat::setType(const std::string type)
-{
-	this->type = type;
 }
 
 void	Cat::makeSound() const

@@ -6,7 +6,7 @@
 /*   By: vhappenh <vhappenh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/28 09:32:09 by vhappenh          #+#    #+#             */
-/*   Updated: 2023/07/28 14:16:13 by vhappenh         ###   ########.fr       */
+/*   Updated: 2023/07/30 13:00:09 by vhappenh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,6 @@ Animal::~Animal()
 std::string Animal::getType() const
 {
 	return (this->type);
-}
-
-void	Animal::setType(const std::string type)
-{
-	this->type = type;
 }
 
 void	Animal::makeSound() const
