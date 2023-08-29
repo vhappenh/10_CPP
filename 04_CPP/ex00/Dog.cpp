@@ -6,13 +6,13 @@
 /*   By: vhappenh <vhappenh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/28 09:47:11 by vhappenh          #+#    #+#             */
-/*   Updated: 2023/08/29 14:55:16 by vhappenh         ###   ########.fr       */
+/*   Updated: 2023/08/29 15:48:33 by vhappenh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Dog.hpp"
 
-Dog::Dog() : Animal::Animal("Dog")
+Dog::Dog() : Animal("Dog")
 {
 	std::cout << "Dog constructor called" << std::endl;
 }

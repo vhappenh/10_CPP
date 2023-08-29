@@ -6,13 +6,13 @@
 /*   By: vhappenh <vhappenh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/28 10:02:20 by vhappenh          #+#    #+#             */
-/*   Updated: 2023/08/29 14:55:08 by vhappenh         ###   ########.fr       */
+/*   Updated: 2023/08/29 15:48:47 by vhappenh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Cat.hpp"
 
-Cat::Cat() : Animal::Animal("Cat")
+Cat::Cat() : Animal("Cat")
 {
 	std::cout << "Cat constructor called" << std::endl;
 }

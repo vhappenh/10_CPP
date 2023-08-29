@@ -6,7 +6,7 @@
 /*   By: vhappenh <vhappenh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/28 09:47:11 by vhappenh          #+#    #+#             */
-/*   Updated: 2023/08/29 15:01:19 by vhappenh         ###   ########.fr       */
+/*   Updated: 2023/08/29 15:49:38 by vhappenh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ Dog& Dog::operator=(const Dog& other)
 	if (this != &other)
 	{
 		Animal::operator=(other);
-		*this->brain = *other.brain;
+		*brain = *other.brain;
 	}
 	return (*this);
 }

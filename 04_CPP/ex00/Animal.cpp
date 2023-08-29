@@ -6,7 +6,7 @@
 /*   By: vhappenh <vhappenh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/28 09:32:09 by vhappenh          #+#    #+#             */
-/*   Updated: 2023/08/29 14:56:36 by vhappenh         ###   ########.fr       */
+/*   Updated: 2023/08/29 15:37:22 by vhappenh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ Animal& Animal::operator=(const Animal& other)
 {
 	std::cout << "Animal Copy assignment operator called" << std::endl;
 	if (this != &other)
-		this->type = other.type;
+		type = other.type;
 	return (*this);
 }
 

@@ -6,16 +6,15 @@
 /*   By: vhappenh <vhappenh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/28 11:28:27 by vhappenh          #+#    #+#             */
-/*   Updated: 2023/08/29 13:40:09 by vhappenh         ###   ########.fr       */
+/*   Updated: 2023/08/29 15:40:53 by vhappenh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "WrongAnimal.hpp"
 
-WrongAnimal::WrongAnimal(std::string name)
+WrongAnimal::WrongAnimal(std::string name) : type(name)
 {
 	std::cout << "WrongAnimal constructor called" << std::endl;
-	type = name;
 }
 
 WrongAnimal::WrongAnimal(const WrongAnimal& other)
@@ -28,7 +27,7 @@ WrongAnimal& WrongAnimal::operator=(const WrongAnimal& other)
 {
 	std::cout << "WrongAnimal Copy assignment operator called" << std::endl;
 	if (this != &other)
-		this->type = other.type;
+		type = other.type;
 	return (*this);
 }
 

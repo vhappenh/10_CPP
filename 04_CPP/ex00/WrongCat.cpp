@@ -6,13 +6,13 @@
 /*   By: vhappenh <vhappenh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/28 11:28:22 by vhappenh          #+#    #+#             */
-/*   Updated: 2023/08/29 14:55:30 by vhappenh         ###   ########.fr       */
+/*   Updated: 2023/08/29 15:48:37 by vhappenh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "WrongCat.hpp"
 
-WrongCat::WrongCat() : WrongAnimal::WrongAnimal("WrongCat")
+WrongCat::WrongCat() : WrongAnimal("WrongCat")
 {
 	std::cout << "WrongCat constructor called" << std::endl;
 }
