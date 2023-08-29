@@ -6,16 +6,15 @@
 /*   By: vhappenh <vhappenh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/28 09:32:09 by vhappenh          #+#    #+#             */
-/*   Updated: 2023/07/30 13:00:09 by vhappenh         ###   ########.fr       */
+/*   Updated: 2023/08/29 14:56:36 by vhappenh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Animal.hpp"
 
-Animal::Animal()
+Animal::Animal(std::string name) : type(name)
 {
 	std::cout << "Animal constructor called" << std::endl;
-	this->type = "default";
 }
 
 Animal::Animal(const Animal& other)

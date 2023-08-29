@@ -6,16 +6,15 @@
 /*   By: vhappenh <vhappenh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/28 11:28:22 by vhappenh          #+#    #+#             */
-/*   Updated: 2023/07/30 12:39:20 by vhappenh         ###   ########.fr       */
+/*   Updated: 2023/08/29 14:55:30 by vhappenh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "WrongCat.hpp"
 
-WrongCat::WrongCat()
+WrongCat::WrongCat() : WrongAnimal::WrongAnimal("WrongCat")
 {
 	std::cout << "WrongCat constructor called" << std::endl;
-	this->type = "WrongCat";
 }
 
 WrongCat::WrongCat(const WrongCat& other)
@@ -28,7 +27,7 @@ WrongCat& WrongCat::operator=(const WrongCat& other)
 {
 	std::cout << "WrongCat Copy assignment operator called" << std::endl;
 	if (this != &other)
-		this->type = other.type;
+		WrongAnimal::operator=(other);
 	return (*this);
 }
 

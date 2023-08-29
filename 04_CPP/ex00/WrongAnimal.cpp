@@ -6,16 +6,16 @@
 /*   By: vhappenh <vhappenh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/28 11:28:27 by vhappenh          #+#    #+#             */
-/*   Updated: 2023/07/28 14:16:48 by vhappenh         ###   ########.fr       */
+/*   Updated: 2023/08/29 13:40:09 by vhappenh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "WrongAnimal.hpp"
 
-WrongAnimal::WrongAnimal()
+WrongAnimal::WrongAnimal(std::string name)
 {
 	std::cout << "WrongAnimal constructor called" << std::endl;
-	this->type = "default";
+	type = name;
 }
 
 WrongAnimal::WrongAnimal(const WrongAnimal& other)
@@ -40,11 +40,6 @@ WrongAnimal::~WrongAnimal()
 std::string WrongAnimal::getType() const
 {
 	return (this->type);
-}
-
-void	WrongAnimal::setType(const std::string type)
-{
-	this->type = type;
 }
 
 void	WrongAnimal::makeSound() const

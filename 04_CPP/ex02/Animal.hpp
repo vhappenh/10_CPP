@@ -6,7 +6,7 @@
 /*   By: vhappenh <vhappenh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/28 09:32:15 by vhappenh          #+#    #+#             */
-/*   Updated: 2023/08/29 14:58:45 by vhappenh         ###   ########.fr       */
+/*   Updated: 2023/08/29 15:04:05 by vhappenh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,5 @@ public:
 	virtual ~Animal();
 
 	std::string 	getType() const;
-	virtual void	makeSound() const;
+	virtual void	makeSound() const = 0;
 } ;

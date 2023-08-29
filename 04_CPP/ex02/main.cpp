@@ -6,7 +6,7 @@
 /*   By: vhappenh <vhappenh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/28 09:42:30 by vhappenh          #+#    #+#             */
-/*   Updated: 2023/08/29 15:02:16 by vhappenh         ###   ########.fr       */
+/*   Updated: 2023/08/29 15:14:45 by vhappenh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@
 
 int	main(void)
 {
-	Dog		hundi;
-	Dog		wuffi(hundi);
 	Animal *animal[10];
 	std::cout << std::endl;
 	for (int i = 0; i < 10; i++)
