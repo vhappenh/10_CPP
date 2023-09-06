@@ -1,4 +1,4 @@
-NAME := animals
+NAME := mommy
 
 CPPFLAGS := -Wall -Werror -Wextra -std=c++98 -MMD -MP -g
 
@@ -7,11 +7,7 @@ CXX := c++
 OBJ_P := obj/
 
 SRC := main.cpp\
-		Animal.cpp\
-		Dog.cpp\
-		Cat.cpp\
-		WrongAnimal.cpp\
-		WrongCat.cpp
+		Bureaucrat.cpp
 
 OBJ := $(SRC:%.cpp=$(OBJ_P)%.o)
 
