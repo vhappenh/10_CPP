@@ -1,4 +1,4 @@
-NAME := maggots
+NAME := toomanyforms
 
 CPPFLAGS := -Wall -Werror -Wextra -std=c++98 -MMD -MP -g
 
@@ -8,7 +8,10 @@ OBJ_P := obj/
 
 SRC := main.cpp\
 		Bureaucrat.cpp\
-		AForm.cpp
+		AForm.cpp\
+		ShrubberyCreationForm.cpp\
+		RobotomyRequestForm.cpp\
+		PresidentialPardonForm.cpp
 
 OBJ := $(SRC:%.cpp=$(OBJ_P)%.o)
 

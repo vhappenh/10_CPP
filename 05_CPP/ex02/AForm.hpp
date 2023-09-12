@@ -18,20 +18,22 @@
 class AForm {
 private:
 	const std::string 	_name;
-	bool				_signed;
+	mutable bool		_signed;
 	const int			_sign;
 	const int			_exec;
 public:
 	AForm(std::string name, int sign, int exec);
 	AForm(const AForm& other);
 	AForm& operator=(const AForm& other);
-	~AForm();
+	virtual ~AForm();
 
 	std::string		getName() const;
 	bool			getStatus() const;
 	int				getSign() const;
 	int				getExec() const;
-	void			beSigned(const Bureaucrat& other);
+	void			beSigned(const Bureaucrat& other) const ;
+	
+	virtual void	execute(Bureaucrat const & executor) const = 0;
 	
 	class GradeTooHighException : public std::exception	{
 	public:

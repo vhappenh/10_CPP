@@ -6,50 +6,83 @@
 /*   By: vhappenh <vhappenh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 09:41:35 by vhappenh          #+#    #+#             */
-/*   Updated: 2023/09/07 15:45:57 by vhappenh         ###   ########.fr       */
+/*   Updated: 2023/09/12 17:00:56 by vhappenh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
-#include "AForm.hpp"
 
-int	main()
-{
-// initialising one bureaucrat
-	Bureaucrat c("Maria", 2);
-	std::cout << c.getName() << std::endl;
-	std::cout << c.getGrade() << std::endl;
-	std::cout << c << std::endl;
-	std::cout << std::endl;
-	std::cout << std::endl;
+#include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "PresidentialPardonForm.hpp"
 
-// initialising one form
-	AForm a("Tax refund", 75, 1);
-	std::cout << a.getName() << std::endl;
-	std::cout << a.getSign() << std::endl;
-	std::cout << a.getExec() << std::endl;
-	std::cout << a << std::endl;
+int	main() {
+	AForm			*form = NULL;
+	Bureaucrat		bob("bob", 1);
+	Bureaucrat		phil("phil", 40);
+	Bureaucrat		luc("luc", 150);
 
-// signing form with bureaucrat
-	a.beSigned(c);
-	c.signForm(a);
-	std::cout << std::endl;
-	std::cout << std::endl;
-
-// signing form with wrong bureaucrat
+	try
 	{
-		Bureaucrat 	x("testy", 100);
-		AForm		y("testform", 75, 1);
-		try {
-			x.signForm(y);
-			y.beSigned(x);
-			x.signForm(y);
-		}
-		catch (const std::exception& y) {
-			std::cerr << "Exception: " << y.what() << std::endl;
-		}
+		form = new ShrubberyCreationForm("28Z");
+		form->execute(bob);
+		delete form;
+		form = NULL;
 	}
-	std::cout << std::endl;
-	std::cout << std::endl;
+	catch (std::exception &e)
+	{
+		std::cout << e.what() << std::endl;
+	}
+
+	try
+	{
+		form = new ShrubberyCreationForm("28A");
+		form->beSigned(bob);
+		form->execute(bob);
+		delete form;
+		form = NULL;
+	}
+	catch (std::exception &e)
+	{
+		std::cout << e.what() << std::endl;
+	}
+
+
+	try
+	{
+		form = new ShrubberyCreationForm("28B");
+		form->beSigned(bob);
+		form->execute(phil);
+		form->execute(phil);
+		form->execute(phil);
+		form->execute(phil);
+		form->execute(phil);
+		form->execute(phil);
+		form->execute(phil);
+		form->execute(phil);
+		form->execute(phil);
+		delete form;
+		form = NULL;
+	}
+	catch (std::exception &e)
+	{
+		std::cout << e.what() << std::endl;
+	}
+
+
+	try
+	{
+		form = new ShrubberyCreationForm("28C");
+		form->beSigned(bob);
+		form->execute(phil);
+		form->execute(luc);
+		delete form;
+		form = NULL;
+	}
+	catch (std::exception &e)
+	{
+		std::cout << e.what() << std::endl;
+	}
+
 	return (0);
 }
