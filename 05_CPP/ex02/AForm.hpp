@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Form.hpp                                           :+:      :+:    :+:   */
+/*   AForm.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vhappenh <vhappenh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -15,17 +15,17 @@
 #include <stdexcept>
 #include "Bureaucrat.hpp"
 
-class Form {
+class AForm {
 private:
 	const std::string 	_name;
 	bool				_signed;
 	const int			_sign;
 	const int			_exec;
 public:
-	Form(std::string name, int sign, int exec);
-	Form(const Form& other);
-	Form& operator=(const Form& other);
-	~Form();
+	AForm(std::string name, int sign, int exec);
+	AForm(const AForm& other);
+	AForm& operator=(const AForm& other);
+	~AForm();
 
 	std::string		getName() const;
 	bool			getStatus() const;
@@ -47,4 +47,4 @@ public:
 	};
 };
 
-std::ostream&	operator<<(std::ostream &out, const Form& other);
+std::ostream&	operator<<(std::ostream &out, const AForm& other);

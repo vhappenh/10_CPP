@@ -6,12 +6,12 @@
 /*   By: vhappenh <vhappenh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 09:43:38 by vhappenh          #+#    #+#             */
-/*   Updated: 2023/09/07 15:34:07 by vhappenh         ###   ########.fr       */
+/*   Updated: 2023/09/07 15:36:50 by vhappenh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include "AForm.hpp"
 
 Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name), _grade(grade) {
 	std::cout << "Bureaucrat constructor called!" << std::endl;
@@ -64,7 +64,7 @@ void	Bureaucrat::decrementGrade() {
 			throw GradeTooLowException();
 }
 
-void	Bureaucrat::signForm(const Form& other) {
+void	Bureaucrat::signForm(const AForm& other) {
 	if (other.getStatus())
 		std::cout << _name << " signed " << other.getName() << std::endl;
 	else

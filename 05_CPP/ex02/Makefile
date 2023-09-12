@@ -8,7 +8,7 @@ OBJ_P := obj/
 
 SRC := main.cpp\
 		Bureaucrat.cpp\
-		Form.cpp
+		AForm.cpp
 
 OBJ := $(SRC:%.cpp=$(OBJ_P)%.o)
 
