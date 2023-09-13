@@ -6,7 +6,7 @@
 /*   By: vhappenh <vhappenh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 12:00:06 by vhappenh          #+#    #+#             */
-/*   Updated: 2023/09/12 17:24:24 by vhappenh         ###   ########.fr       */
+/*   Updated: 2023/09/13 10:12:19 by vhappenh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,7 @@ std::string	ShrubberyCreationForm::getTarget() const {
 }
 
 void	ShrubberyCreationForm::execute(Bureaucrat const & executor) const {
-	beSigned(executor);
-	if (getStatus()) {
+	if (getExec() >= executor.getGrade()) {
 		std::ofstream myfile;
 		myfile.open ((_target + "_shrubbery").c_str());
 		myfile << "~~~~~A~~~~~" << std::endl;

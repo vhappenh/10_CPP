@@ -18,7 +18,7 @@
 class AForm {
 private:
 	const std::string 	_name;
-	mutable bool		_signed;
+	bool				_signed;
 	const int			_sign;
 	const int			_exec;
 public:
@@ -31,7 +31,7 @@ public:
 	bool			getStatus() const;
 	int				getSign() const;
 	int				getExec() const;
-	void			beSigned(const Bureaucrat& other) const ;
+	void			beSigned(const Bureaucrat& other);
 	
 	virtual void	execute(Bureaucrat const & executor) const = 0;
 	

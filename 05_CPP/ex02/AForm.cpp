@@ -52,7 +52,7 @@ int		AForm::getExec() const {
 	return (_exec);
 }
 
-void	AForm::beSigned(const Bureaucrat& other) const {
+void	AForm::beSigned(const Bureaucrat& other){
 	if (other.getGrade() <= getSign())
 		_signed = true;
 	else

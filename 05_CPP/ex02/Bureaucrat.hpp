@@ -6,7 +6,7 @@
 /*   By: vhappenh <vhappenh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 09:43:40 by vhappenh          #+#    #+#             */
-/*   Updated: 2023/09/07 15:37:00 by vhappenh         ###   ########.fr       */
+/*   Updated: 2023/09/13 10:03:04 by vhappenh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ public:
 	void			incrementGrade();
 	void			decrementGrade();
 	void			signForm(const AForm& other);
+	void 			executeForm(AForm const & form);
 
 	class GradeTooHighException : public std::exception	{
 	public:
