@@ -1,4 +1,4 @@
-NAME := maggots
+NAME := convert
 
 CXXFLAGS := -Wall -Werror -Wextra -std=c++98 -MMD -MP -g
 
@@ -7,8 +7,7 @@ CXX := c++
 OBJ_P := obj/
 
 SRC := main.cpp\
-		Bureaucrat.cpp\
-		Form.cpp
+		ScalarConverter.cpp
 
 OBJ := $(SRC:%.cpp=$(OBJ_P)%.o)
 

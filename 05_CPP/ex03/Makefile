@@ -1,6 +1,6 @@
 NAME := ilovemyjob
 
-CPPFLAGS := -Wall -Werror -Wextra -std=c++98 -MMD -MP -g
+CXXFLAGS := -Wall -Werror -Wextra -std=c++98 -MMD -MP -g
 
 CXX := c++
 
@@ -21,10 +21,10 @@ DEPS := $(SRC:%.cpp=$(OBJ_P)%.d)
 all: $(NAME)
 
 $(NAME): $(OBJ)
-		$(CXX) $(CPPFLAGS) -o $(NAME) $(OBJ)
+		$(CXX) $(CXXFLAGS) -o $(NAME) $(OBJ)
 
 $(OBJ_P)%.o:%.cpp | $(OBJ_P)
-		$(CXX) $(CPPFLAGS) -c $< -o $@
+		$(CXX) $(CXXFLAGS) -c $< -o $@
 
 $(OBJ_P):
 		mkdir -p obj

@@ -1,8 +1,8 @@
 NAME := animals
 
-CFLAGS := -Wall -Werror -Wextra -std=c++98 -MMD -MP
+CXXFLAGS := -Wall -Werror -Wextra -std=c++98 -MMD -MP
 
-CC := c++ -g
+CXX := c++ -g
 
 OBJ_P := ./obj/
 
@@ -20,10 +20,10 @@ DEPS := $(SRC:%.cpp=$(OBJ_P)%.d)
 
 $(OBJ_P)%.o:%.cpp
 		mkdir -p obj
-		$(CC) $(CFLAGS) -c $< -o $@
+		$(CXX) $(CXXFLAGS) -c $< -o $@
 
 $(NAME): $(OBJ)
-		$(CC) $(CFLAGS) -o $(NAME) $(OBJ)
+		$(CXX) $(CXXFLAGS) -o $(NAME) $(OBJ)
 
 all: $(NAME)
 

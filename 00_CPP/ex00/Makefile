@@ -1,8 +1,8 @@
 NAME := megaphone
 
-CFLAGS := -Wall -Werror -Wextra -std=c++98
+CXXFLAGS := -Wall -Werror -Wextra -std=c++98
 
-CC := c++
+CXX := c++
 
 OBJ_P := ./obj/
 
@@ -12,10 +12,10 @@ OBJ := $(SRC:%.cpp=$(OBJ_P)%.o)
 
 $(OBJ_P)%.o:%.cpp
 			mkdir -p obj
-			$(CC) $(CFLAGS) -c $< -o $@
+			$(CXX) $(CXXFLAGS) -c $< -o $@
 
 $(NAME): $(OBJ)
-		$(CC) $(CFLAGS) -o $(NAME) $(OBJ)
+		$(CXX) $(CXXFLAGS) -o $(NAME) $(OBJ)
 
 all: $(NAME)
 
