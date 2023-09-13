@@ -6,7 +6,7 @@
 /*   By: vhappenh <vhappenh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 11:49:00 by vhappenh          #+#    #+#             */
-/*   Updated: 2023/09/13 16:40:16 by vhappenh         ###   ########.fr       */
+/*   Updated: 2023/09/13 17:05:48 by vhappenh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,14 @@ void ScalarConverter::convert(std::string input) {
 	// printing float   ######################Error with input 42; I'm missing the .0 if there is nothing behind the . or there is none##############
 	if (isnanf(n) || isinff(n))
 		std::cout << "float : " << static_cast<float>(n) << "f" << std::endl;
-	else if (n <= std::numeric_limits<float>::max() && n >= (std::numeric_limits<float>::max() * -1 - 1))
-		(p == 0) ? std::cout << "float : " << static_cast<float>(n) << "f" << std::endl : std::cout << "float : " << static_cast<float>(n) << "." << std::string(p, '0') << "f" << std::endl;
+	else if (n <= std::numeric_limits<float>::max() && n >= (std::numeric_limits<float>::max() * -1 - 1)) {
+		if (input.find_first_of('.', 0) == input.npos || input.find_first_of('.', 0) + 1 == input.length())
+			std::cout << "float : " << static_cast<float>(n) << ".0f" << std::endl;
+		else if (p == 0) 
+			std::cout << "float : " << static_cast<float>(n) << "f" << std::endl;
+		else
+			std::cout << "float : " << static_cast<float>(n) << "." << std::string(p, '0') << "f" << std::endl;	
+	}
 	else
 		std::cout << "float : impossible" << std::endl;
 
