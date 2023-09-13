@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   RobotomyRequestForm.hpp                            :+:      :+:    :+:   */
+/*   Intern.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vhappenh <vhappenh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/12 11:50:40 by vhappenh          #+#    #+#             */
-/*   Updated: 2023/09/13 11:29:09 by vhappenh         ###   ########.fr       */
+/*   Created: 2023/09/13 10:50:10 by vhappenh          #+#    #+#             */
+/*   Updated: 2023/09/13 11:30:39 by vhappenh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
-#include "AForm.hpp"
+#include <iostream>
+#include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "PresidentialPardonForm.hpp"
 
-class RobotomyRequestForm : public AForm {
-private:
-	std::string _target;
+class Intern {
 public:
-	RobotomyRequestForm(const std::string target = "");
-	RobotomyRequestForm(const RobotomyRequestForm& other);
-	RobotomyRequestForm& operator=(const RobotomyRequestForm& other);
-	~RobotomyRequestForm();
+	Intern();
+	Intern(const Intern& other);
+	Intern&	operator=(const Intern& other);
+	~Intern();
 	
-	std::string	getTarget() const;
-	void		execute(Bureaucrat const & executor) const;
+	AForm* makeForm(std::string formname, std::string target);
 } ;

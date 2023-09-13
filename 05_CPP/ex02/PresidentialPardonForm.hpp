@@ -6,10 +6,11 @@
 /*   By: vhappenh <vhappenh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 11:50:57 by vhappenh          #+#    #+#             */
-/*   Updated: 2023/09/12 15:11:15 by vhappenh         ###   ########.fr       */
+/*   Updated: 2023/09/13 11:29:06 by vhappenh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#pragma once
 #include "AForm.hpp"
 
 class PresidentialPardonForm : public AForm {

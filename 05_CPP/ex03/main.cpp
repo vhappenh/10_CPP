@@ -1,27 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   RobotomyRequestForm.hpp                            :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vhappenh <vhappenh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/12 11:50:40 by vhappenh          #+#    #+#             */
-/*   Updated: 2023/09/13 11:29:09 by vhappenh         ###   ########.fr       */
+/*   Created: 2023/09/06 09:41:35 by vhappenh          #+#    #+#             */
+/*   Updated: 2023/09/13 11:36:59 by vhappenh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
-#include "AForm.hpp"
+#include "Bureaucrat.hpp"
+#include "Intern.hpp"
 
-class RobotomyRequestForm : public AForm {
-private:
-	std::string _target;
-public:
-	RobotomyRequestForm(const std::string target = "");
-	RobotomyRequestForm(const RobotomyRequestForm& other);
-	RobotomyRequestForm& operator=(const RobotomyRequestForm& other);
-	~RobotomyRequestForm();
+int	main() {
+	Intern someRandomIntern;
+	AForm* rrf;
 	
-	std::string	getTarget() const;
-	void		execute(Bureaucrat const & executor) const;
-} ;
+	rrf = someRandomIntern.makeForm("robotomy request", "Bender");
+	delete rrf;
+	return (0);
+}
