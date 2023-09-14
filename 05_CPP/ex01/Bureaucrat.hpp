@@ -6,7 +6,7 @@
 /*   By: vhappenh <vhappenh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 09:43:40 by vhappenh          #+#    #+#             */
-/*   Updated: 2023/09/13 11:28:51 by vhappenh         ###   ########.fr       */
+/*   Updated: 2023/09/14 11:57:14 by vhappenh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ class Form ;
 
 class Bureaucrat {
 private:
-	std::string _name;
+	const std::string _name;
 	int			_grade;
 public:
 	Bureaucrat(std::string name = "default", int grade = 0);
