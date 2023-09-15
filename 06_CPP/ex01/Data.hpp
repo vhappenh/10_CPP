@@ -1,27 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Data.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vhappenh <vhappenh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/13 11:55:10 by vhappenh          #+#    #+#             */
-/*   Updated: 2023/09/14 14:44:36 by vhappenh         ###   ########.fr       */
+/*   Created: 2023/09/14 14:45:41 by vhappenh          #+#    #+#             */
+/*   Updated: 2023/09/15 09:38:53 by vhappenh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#pragma once
 #include <iostream>
-#include "ScalarConverter.hpp"
 
-int	main(int ac, char **av) {
-	
-	if (ac != 2) {
-		std::cout << "Wrong amount of arguments!" << std::endl;
-		return (1);
-	}
-	
-	std::cout << std::endl;
-	ScalarConverter::convert(av[1]);
-	std::cout << std::endl;
-	return (0);
-}
+class Data {
+private:
+	const std::string _name;
+public:
+	Data();
+	Data(const Data& other);
+	Data& operator=(const Data& other);
+	~Data();
+} ;

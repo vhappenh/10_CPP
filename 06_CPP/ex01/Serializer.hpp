@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Serializer.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vhappenh <vhappenh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/13 11:55:10 by vhappenh          #+#    #+#             */
-/*   Updated: 2023/09/14 14:44:36 by vhappenh         ###   ########.fr       */
+/*   Created: 2023/09/14 14:33:50 by vhappenh          #+#    #+#             */
+/*   Updated: 2023/09/15 10:01:51 by vhappenh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#pragma once
 #include <iostream>
-#include "ScalarConverter.hpp"
+#include <stdint.h>
+#include "Data.hpp"
 
-int	main(int ac, char **av) {
-	
-	if (ac != 2) {
-		std::cout << "Wrong amount of arguments!" << std::endl;
-		return (1);
-	}
-	
-	std::cout << std::endl;
-	ScalarConverter::convert(av[1]);
-	std::cout << std::endl;
-	return (0);
-}
+class Serializer {
+private:
+	Serializer();
+	Serializer(const Serializer& other);
+	Serializer& operator=(const Serializer& other);
+	~Serializer();
+public:
+	static uintptr_t serialize(Data* ptr);
+	static Data* deserialize(uintptr_t raw);
+} ;

@@ -6,7 +6,7 @@
 /*   By: vhappenh <vhappenh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 11:49:00 by vhappenh          #+#    #+#             */
-/*   Updated: 2023/09/14 14:17:02 by vhappenh         ###   ########.fr       */
+/*   Updated: 2023/09/14 14:32:33 by vhappenh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,8 @@ bool	check_input(std::string input, double &n, double &pf, double &pd) {
 		pd = 1;
 	else if (pd >= 6) {
 		pf = 6;
-		if (pd > 16)
-			pd = 16;
+		if (pd > 15)
+			pd = 15;
 	}
 	else
 		pf = pd;
