@@ -1,28 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   MyTemplateClass.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vhappenh <vhappenh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/06 09:41:35 by vhappenh          #+#    #+#             */
-/*   Updated: 2023/09/20 11:12:59 by vhappenh         ###   ########.fr       */
+/*   Created: 2023/09/20 13:24:15 by vhappenh          #+#    #+#             */
+/*   Updated: 2023/09/20 13:31:47 by vhappenh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Bureaucrat.hpp"
-#include "Intern.hpp"
+template <typename T>
+void swap(T p1, T p2){
+	
+}
 
-int	main() {
-	Intern someRandomIntern;
-	AForm* rrf;
-	std::cout << std::endl;
+template <typename T>
+T min(T p1, T p2){
+	
+}
 
-	std::cout << "--------------starting test--------------" << std::endl;
-	rrf = someRandomIntern.makeForm("robotomy request", "Bender");
-	std::cout << "---------------test ended----------------" << std::endl;
-	std::cout << std::endl;
-	delete rrf;
-	std::cout << std::endl;
-	return (0);
+template <typename T>
+T max(T p1, T p2){
+	
 }

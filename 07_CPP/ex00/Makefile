@@ -7,7 +7,6 @@ CXX := c++
 OBJ_P := obj/
 
 SRC := main.cpp\
-		Base.cpp\
 
 OBJ := $(SRC:%.cpp=$(OBJ_P)%.o)
 

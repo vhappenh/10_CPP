@@ -6,7 +6,7 @@
 /*   By: vhappenh <vhappenh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 09:41:35 by vhappenh          #+#    #+#             */
-/*   Updated: 2023/09/07 14:53:16 by vhappenh         ###   ########.fr       */
+/*   Updated: 2023/09/20 10:40:38 by vhappenh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,38 +14,51 @@
 
 int	main()
 {
+	std::cout << "----------first test-----------" << std::endl;
 	try {
 		Bureaucrat a("Bernd", 1);
 	}
-	catch (const std::exception& a) {
-		std::cerr << "Exception: " << a.what() << std::endl;
+	catch (const std::exception& e1) {
+		std::cerr << "Exception: " << e1.what() << std::endl;
 	}
 	std::cout << std::endl;
 	
+	
+	std::cout << "----------second test----------" << std::endl;
 	try {
 		Bureaucrat b("Thomas", -5);
 	}
-	catch (const std::exception& b) {
-		std::cerr << "Exception: " << b.what() << std::endl;
+	catch (const std::exception& e2) {
+		std::cerr << "Exception: " << e2.what() << std::endl;
 	}
 	std::cout << std::endl;
 	
+	
+	std::cout << "----------third test----------" << std::endl;
 	Bureaucrat c("Maria", 2);
+	std::cout << std::endl;
+	
 	std::cout << c.getName() << std::endl;
 	std::cout << c.getGrade() << std::endl;
+	std::cout << std::endl;
+	
 	try {
 		c.incrementGrade();
 	}
-	catch (const std::exception& c) {
-		std::cerr << "Exception: " << c.what() << std::endl;
+	catch (const std::exception& e3) {
+		std::cerr << "Exception: " << e3.what() << std::endl;
 	}
 	std::cout << c.getGrade() << std::endl;
+	std::cout << std::endl;
+	
 	try {
 		c.incrementGrade();;
 	}
-	catch (const std::exception& c) {
-		std::cerr << "Exception: " << c.what() << std::endl;
+	catch (const std::exception& e4) {
+		std::cerr << "Exception: " << e4.what() << std::endl;
 	}
+	std::cout << std::endl;
+	
 	std::cout << c.getGrade() << std::endl;
 	std::cout << c << std::endl;
 	std::cout << std::endl;

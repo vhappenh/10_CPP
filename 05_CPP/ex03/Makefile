@@ -1,6 +1,6 @@
 NAME := ilovemyjob
 
-CXXFLAGS := -Wall -Werror -Wextra -std=c++98 -MMD -MP -g
+CXXFLAGS := -Wall -Werror -Wextra -std=c++98 -MMD -MP -gdwarf-4
 
 CXX := c++
 

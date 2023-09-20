@@ -6,7 +6,7 @@
 /*   By: vhappenh <vhappenh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 10:49:54 by vhappenh          #+#    #+#             */
-/*   Updated: 2023/09/13 11:39:58 by vhappenh         ###   ########.fr       */
+/*   Updated: 2023/09/20 13:53:05 by vhappenh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,27 +31,35 @@ Intern::~Intern() {
 	std::cout << "Intern destructor called!" << std::endl;
 }
 
+AForm* Intern::newShrubbery(std::string target){
+		return (new ShrubberyCreationForm(target));
+}
+
+AForm* Intern::newRobotomy(std::string target){
+		return (new RobotomyRequestForm(target));
+}
+
+AForm* Intern::newPresidential(std::string target){
+		return (new PresidentialPardonForm(target));
+}
+
 AForm* Intern::makeForm(std::string formname, std::string target) {
-	std::string arr[4] = {
+	std::string arr[] = {
 		"shrubbery creation",
 		"robotomy request",
 		"presidential pardon"
 	};
-	AForm *forms[] = {
-		new ShrubberyCreationForm(target),
-		new RobotomyRequestForm(target),
-		new PresidentialPardonForm(target)
+	AForm* (Intern::*forms[])(std::string) = {
+		&Intern::newShrubbery,
+		&Intern::newRobotomy,
+		&Intern::newPresidential
 	};
 	for (int i = 0; i < 3; i++)
 	{
 		if (formname == arr[i]) {
 			std::cout << "Intern creates " << formname << std::endl;
-			for (int j = i + 1; j < 3; j++)
-				delete forms[j];
-			return (forms[i]);
+			return (this->*forms[i])(target);
 		}
-		else
-			delete forms[i];
 	}
 	std::cout << "Intern could't create form. Type not found!" << std::endl;
 	return NULL;

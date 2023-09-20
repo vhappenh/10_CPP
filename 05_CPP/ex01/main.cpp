@@ -6,7 +6,7 @@
 /*   By: vhappenh <vhappenh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 09:41:35 by vhappenh          #+#    #+#             */
-/*   Updated: 2023/09/07 15:43:25 by vhappenh         ###   ########.fr       */
+/*   Updated: 2023/09/20 10:48:24 by vhappenh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,15 @@
 int	main()
 {
 // initialising one bureaucrat
+	std::cout << "---------------first test--------------" << std::endl;
 	Bureaucrat c("Maria", 2);
 	std::cout << c.getName() << std::endl;
 	std::cout << c.getGrade() << std::endl;
 	std::cout << c << std::endl;
 	std::cout << std::endl;
-	std::cout << std::endl;
 
 // testing with wrong inputs
+	std::cout << "---------------second test-------------" << std::endl;
 	try {
 		Form	a("Tax test1", 500, 100);
 	}
@@ -49,9 +50,9 @@ int	main()
 		std::cerr << "Exception: " << a.what() << std::endl;
 	}
 	std::cout << std::endl;
-	std::cout << std::endl;
 
 // initialising one form
+	std::cout << "---------------third test-------------" << std::endl;
 	Form a("Tax refund", 75, 1);
 	std::cout << a.getName() << std::endl;
 	std::cout << a.getSign() << std::endl;
@@ -62,9 +63,9 @@ int	main()
 	a.beSigned(c);
 	c.signForm(a);
 	std::cout << std::endl;
-	std::cout << std::endl;
 
 // signing form with wrong bureaucrat
+	std::cout << "---------------fourth test------------" << std::endl;
 	{
 		Bureaucrat 	x("testy", 100);
 		Form		y("testform", 75, 1);
@@ -77,7 +78,6 @@ int	main()
 			std::cerr << "Exception: " << y.what() << std::endl;
 		}
 	}
-	std::cout << std::endl;
 	std::cout << std::endl;
 	return (0);
 }

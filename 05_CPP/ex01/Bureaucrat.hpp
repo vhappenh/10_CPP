@@ -6,7 +6,7 @@
 /*   By: vhappenh <vhappenh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 09:43:40 by vhappenh          #+#    #+#             */
-/*   Updated: 2023/09/14 11:57:14 by vhappenh         ###   ########.fr       */
+/*   Updated: 2023/09/20 10:24:08 by vhappenh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,15 +34,11 @@ public:
 
 	class GradeTooHighException : public std::exception	{
 	public:
-		const char* what() const throw() {
-			return "Grade is too damn high!";
-		}
+		const char* what() const throw();
 	};
 	class GradeTooLowException : public std::exception	{
 	public:
-		const char* what() const throw() {
-			return "Grade is too damn low!";
-		}
+		const char* what() const throw();
 	};
 };
 

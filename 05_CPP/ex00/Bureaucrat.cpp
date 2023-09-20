@@ -6,7 +6,7 @@
 /*   By: vhappenh <vhappenh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 09:43:38 by vhappenh          #+#    #+#             */
-/*   Updated: 2023/09/14 12:03:29 by vhappenh         ###   ########.fr       */
+/*   Updated: 2023/09/20 10:21:04 by vhappenh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,14 @@ void	Bureaucrat::decrementGrade() {
 			_grade++;
 		else
 			throw GradeTooLowException();
+}
+
+const char* Bureaucrat::GradeTooHighException::what() const throw() {
+	return "Grade is too damn high!";
+}
+
+const char* Bureaucrat::GradeTooLowException::what() const throw() {
+	return "Grade is too damn low!";
 }
 
 std::ostream&	operator<<(std::ostream &out, const Bureaucrat& other) {
