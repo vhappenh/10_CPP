@@ -6,7 +6,7 @@
 /*   By: vhappenh <vhappenh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 09:41:35 by vhappenh          #+#    #+#             */
-/*   Updated: 2023/09/20 11:01:15 by vhappenh         ###   ########.fr       */
+/*   Updated: 2023/10/02 15:10:48 by vhappenh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,18 @@ int	main() {
         PresidentialPardonForm form3("President");
 
         std::cout << "\n---------------first test----------------" << std::endl;
+		form1.beSigned(bureaucrat);
 		bureaucrat.signForm(form1);
         bureaucrat.executeForm(form1);
         std::cout << "\n---------------second test---------------" << std::endl;
+		form2.beSigned(bureaucrat);
         bureaucrat.signForm(form2);
         bureaucrat.executeForm(form2);
         bureaucrat.executeForm(form2);
         bureaucrat.executeForm(form2);
         bureaucrat.executeForm(form2);
         std::cout << "\n---------------third test----------------" << std::endl;
+		form3.beSigned(bureaucrat);
         bureaucrat.signForm(form3);
         bureaucrat.executeForm(form3);
 		std::cout << std::endl;
