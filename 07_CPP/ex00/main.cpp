@@ -6,11 +6,12 @@
 /*   By: vhappenh <vhappenh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 18:30:04 by vhappenh          #+#    #+#             */
-/*   Updated: 2023/09/20 13:24:37 by vhappenh         ###   ########.fr       */
+/*   Updated: 2023/09/20 14:27:19 by vhappenh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "MyTemplateClass.hpp"
+#include <iostream>
+#include "templates.hpp"
 
 int main( void ) {
 	int a = 2;

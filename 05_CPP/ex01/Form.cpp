@@ -6,7 +6,7 @@
 /*   By: vhappenh <vhappenh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 16:14:24 by vhappenh          #+#    #+#             */
-/*   Updated: 2023/09/07 15:06:48 by vhappenh         ###   ########.fr       */
+/*   Updated: 2023/10/02 15:06:47 by vhappenh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,14 @@ void	Form::beSigned(const Bureaucrat& other) {
 		_signed = true;
 	else
 		throw GradeTooLowException();
+}
+
+const char* Form::GradeTooHighException::what() const throw() {
+	return "Grade is too damn high!";
+}
+
+const char* Form::GradeTooLowException::what() const throw() {
+	return "Grade is too damn low!";
 }
 
 std::ostream&	operator<<(std::ostream &out, const Form& other) {

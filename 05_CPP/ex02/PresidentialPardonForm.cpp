@@ -6,7 +6,7 @@
 /*   By: vhappenh <vhappenh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 13:30:41 by vhappenh          #+#    #+#             */
-/*   Updated: 2023/09/13 10:36:53 by vhappenh         ###   ########.fr       */
+/*   Updated: 2023/10/02 15:05:00 by vhappenh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ std::string	PresidentialPardonForm::getTarget() const {
 }
 
 void	PresidentialPardonForm::execute(Bureaucrat const & executor) const {
-	if (getExec() >= executor.getGrade()) {
+	if (getExec() >= executor.getGrade() && getStatus()) {
 		std::cout << _target << " has been pardoned by Zaphod Beeblebrox." << std::endl;
 	}
 	else

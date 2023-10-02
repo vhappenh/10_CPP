@@ -6,7 +6,7 @@
 /*   By: vhappenh <vhappenh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 13:31:56 by vhappenh          #+#    #+#             */
-/*   Updated: 2023/09/13 10:37:14 by vhappenh         ###   ########.fr       */
+/*   Updated: 2023/10/02 15:05:09 by vhappenh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ std::string	RobotomyRequestForm::getTarget() const {
 }
 
 void	RobotomyRequestForm::execute(Bureaucrat const & executor) const {
-	if (getExec() >= executor.getGrade()) {
+	if (getExec() >= executor.getGrade() && getStatus()) {
 		std::cout << _target << " has been robotomized successfully 50% of the time." << std::endl;
 	}
 	else
