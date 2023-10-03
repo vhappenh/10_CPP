@@ -6,7 +6,7 @@
 /*   By: vhappenh <vhappenh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 11:49:00 by vhappenh          #+#    #+#             */
-/*   Updated: 2023/09/14 14:32:33 by vhappenh         ###   ########.fr       */
+/*   Updated: 2023/10/03 12:54:41 by vhappenh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	get_precision(std::string input) {
 bool	check_input(std::string input, double &n, double &pf, double &pd) {
 	char *endptr;
 	n = strtod(input.c_str(), &endptr);
-	if (endptr[0] && input.length() > 1) {
+	if (endptr[0] && input.length() > 1 && input != "+inff" && input != "-inff" && input != "inff") {
 		std::cout << "Invalid input" << std::endl;
 		return (true);
 	}
@@ -93,7 +93,7 @@ void ScalarConverter::convert(std::string input) {
 	// printing float
 	std::cout << "float : ";
 		if (isnanf(n) || isinff(n))
-			std::cout << static_cast<float>(n) << "f" << std::endl;
+			std::cout << static_cast<float>(n) << "f";
 		else if (n <= std::numeric_limits<float>::max() && n >= (std::numeric_limits<float>::max() * -1 - 1)) 
 			std::cout << std::fixed << std::setprecision(pf) << n << "f";	
 		else
