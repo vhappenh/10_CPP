@@ -6,7 +6,7 @@
 /*   By: vhappenh <vhappenh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 13:15:25 by vhappenh          #+#    #+#             */
-/*   Updated: 2023/09/19 15:33:40 by vhappenh         ###   ########.fr       */
+/*   Updated: 2023/10/03 14:35:15 by vhappenh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,26 +35,36 @@ Base*	generate(void){
 }
 
 void	identify(Base* p){
-	if (dynamic_cast<const A*>(p))
+	if (dynamic_cast<A*>(p))
 		std::cout << "A" << std::endl;
-	else if (dynamic_cast<const B*>(p))
+	else if (dynamic_cast<B*>(p))
 		std::cout << "B" << std::endl;
-	else if (dynamic_cast<const C*>(p))
+	else if (dynamic_cast<C*>(p))
 		std::cout << "C" << std::endl;
 	else
 		std::cout << "unknown type" << std::endl;		
 }
 
 void	identify(Base& p){
-	if (dynamic_cast<const A*>(&p)) {
+	try {
+		(void)dynamic_cast<A&>(p);
         std::cout << "A" << std::endl;
-    } else if (dynamic_cast<const B*>(&p)) {
-        std::cout << "B" << std::endl;
-    } else if (dynamic_cast<const C*>(&p)) {
+		return ;
+	}
+	catch (std::exception &e1) {}
+	try {
+    	(void)dynamic_cast<B&>(p);
+	    std::cout << "B" << std::endl;
+		return ;
+	}
+	catch (std::exception &e2) {}
+    try {
+	    (void)dynamic_cast<C&>(p);
         std::cout << "C" << std::endl;
-    } else {
-        std::cout << "unknown type" << std::endl;
-    }
+		return ;
+	}
+	catch (std::exception &e3) {}
+    std::cout << "unknown type" << std::endl;
 }
 
 int	main(void){
@@ -76,6 +86,12 @@ int	main(void){
 	identify(*test2);
 	identify(*test3);
 	identify(*test4);	
-	identify(*test5);	
+	identify(*test5);
+
+	delete test1;
+	delete test2;
+	delete test3;
+	delete test4;
+	delete test5;
 	return (0);
 }

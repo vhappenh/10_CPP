@@ -6,7 +6,7 @@
 /*   By: vhappenh <vhappenh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 14:42:43 by vhappenh          #+#    #+#             */
-/*   Updated: 2023/09/15 09:51:50 by vhappenh         ###   ########.fr       */
+/*   Updated: 2023/10/03 14:26:07 by vhappenh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,4 +24,7 @@ int	main(void) {
 		std::cout << "noice" << std::endl;
 	else
 		std::cout << "sadge" << std::endl;
+	std::cout << lol->getName() << std::endl;
+	std::cout << blub->getName() << std::endl;
+	delete lol;
 }
