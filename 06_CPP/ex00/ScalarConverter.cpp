@@ -6,7 +6,7 @@
 /*   By: vhappenh <vhappenh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 11:49:00 by vhappenh          #+#    #+#             */
-/*   Updated: 2023/10/03 16:36:58 by vhappenh         ###   ########.fr       */
+/*   Updated: 2023/10/04 16:22:14 by vhappenh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ int	get_precision(std::string input) {
 		return (0);
 	int p = 0;
 	for (int j = i + 1; input[j]; j++) {
+		if (input[j] == 'f')
+			break ;
 		p++;
 	}
 	return (p);
@@ -45,7 +47,7 @@ int	get_precision(std::string input) {
 bool	check_input(std::string input, double &n, double &pf, double &pd) {
 	char *endptr;
 	n = strtod(input.c_str(), &endptr);
-	if (endptr[0] && input.length() > 1 && input != "+inff" && input != "-inff" && input != "inff" && input != "nanf") {
+	if (endptr[0] && (endptr[0] != 'f' || endptr[1] != '\0') && input.length() > 1 && input != "+inff" && input != "-inff" && input != "inff" && input != "nanf") {
 		std::cout << "Invalid input" << std::endl;
 		return (true);
 	}
