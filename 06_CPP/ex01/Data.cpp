@@ -6,7 +6,7 @@
 /*   By: vhappenh <vhappenh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 14:48:35 by vhappenh          #+#    #+#             */
-/*   Updated: 2023/10/03 14:26:31 by vhappenh         ###   ########.fr       */
+/*   Updated: 2023/10/05 15:18:58 by vhappenh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,4 +31,4 @@ Data::~Data() {
 	std::cout << "Data destructor called" << std::endl;
 }
 
-std::string Data::getName() {return (_name);}
+std::string Data::getName() const {return (_name);}

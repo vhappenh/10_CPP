@@ -6,7 +6,7 @@
 /*   By: vhappenh <vhappenh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 11:49:00 by vhappenh          #+#    #+#             */
-/*   Updated: 2023/10/04 16:22:14 by vhappenh         ###   ########.fr       */
+/*   Updated: 2023/10/05 15:39:48 by vhappenh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,77 +31,21 @@ ScalarConverter::~ScalarConverter() {
 	std::cout << "ScalarConverter destructor called!" << std::endl;
 }
 
-int	get_precision(std::string input) {
-	unsigned long i = input.find_first_of('.', 0);
-	if (i == std::string::npos)
-		return (0);
-	int p = 0;
-	for (int j = i + 1; input[j]; j++) {
-		if (input[j] == 'f')
-			break ;
-		p++;
-	}
-	return (p);
-}
-
-bool	check_input(std::string input, double &n, double &pf, double &pd) {
-	char *endptr;
-	n = strtod(input.c_str(), &endptr);
-	if (endptr[0] && (endptr[0] != 'f' || endptr[1] != '\0') && input.length() > 1 && input != "+inff" && input != "-inff" && input != "inff" && input != "nanf") {
-		std::cout << "Invalid input" << std::endl;
-		return (true);
-	}
-	
-	if (n == 0 && input.length() == 1 && input[0] != '0')
-		n = static_cast<double>(input[0]);
-	
-	pf = 1;
-	pd = get_precision(input);
-	
-	if (pd == 0)
-		pd = 1;
-	else if (pd >= 6) {
-		pf = 6;
-		if (pd > 15)
-			pd = 15;
-	}
+static std::string getType(std::string input) {
+	if (input.find_first_of('.') == std::string::npos)
+		return ("INT");
+	else if (input.find_first_of('.') && input.find_first_of('f'))
+		return ("FLOAT");
+	else if (input.find_first_of('.'))
+		return ("DOUBLE");
+	else if (input.length() == 1)
+		return ("CHAR");
 	else
-		pf = pd;
-	return (false);
+		return ("INVALID");
 }
 
 void ScalarConverter::convert(std::string input) {
-	double n, pf, pd;
-	
-	if (check_input(input, n, pf, pd))
-		return ;		
+	ScalarConverter converter;
 
-	// printing char
-	std::cout << "char  : ";
-		if (n <= std::numeric_limits<unsigned char>::max() && n >= std::numeric_limits<unsigned char>::min())
-			(std::isprint(n)) ? (std::cout << static_cast<unsigned char>(n)) : (std::cout << "non printable"); 
-		else
-			std::cout << "impossible";
-	std::cout << std::endl;
-	
-	// printing int
-	std::cout << "int   : ";
-		if (n <= std::numeric_limits<int>::max() && n >= std::numeric_limits<int>::min())
-			std::cout << static_cast<int>(n);
-		else
-			std::cout << "impossible";
-	std::cout << std::endl;
-
-	// printing float
-	std::cout << "float : ";
-		if (isnanf(n) || isinff(n))
-			std::cout << static_cast<float>(n) << "f";
-		else if (n <= std::numeric_limits<float>::max() && n >= (std::numeric_limits<float>::max() * -1 - 1)) 
-			std::cout << std::fixed << std::setprecision(pf) << n << "f";	
-		else
-			std::cout << "impossible";
-	std::cout << std::endl;
-
-	// printing double
-		std::cout << std::fixed << std::setprecision(pd) << "double: " << n << std::endl;
+	converter._type = getType(input);
 }
