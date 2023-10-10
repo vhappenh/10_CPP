@@ -6,7 +6,7 @@
 /*   By: vhappenh <vhappenh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 11:49:00 by vhappenh          #+#    #+#             */
-/*   Updated: 2023/10/10 15:10:34 by vhappenh         ###   ########.fr       */
+/*   Updated: 2023/10/10 17:42:18 by vhappenh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,38 +31,26 @@ ScalarConverter::~ScalarConverter() {
 	std::cout << "ScalarConverter destructor called!" << std::endl;
 }
 
-static void	printChar(char c) {
-	if (isprint(c))
-		std::cout << "Char:   " << c << std::endl;
-	else
-		std::cout << "Char:   not printable" << std::endl;
-}
-
-static void	printInt(int i) {
-	std::cout << "Int:    " << i << std::endl;
-}
-
-static void	printFloat(float f, bool lvl, bool dot) {
-	if (isnanf(f) || isinff(f)) {
-		std::cout << "Float:  " << f << "f" << std::endl;
-		return ;
+static int	get_precision(std::string input) {
+	unsigned long i = input.find_first_of('.', 0);
+	if (i == std::string::npos)
+		return (1);
+	int p = 0;
+	for (int j = i + 1; input[j] && isdigit(input[j]); j++) {
+		p++;
 	}
-	if (lvl)
-		std::cout << "Float:  " << f << ".0f" << std::endl;
-	else if (dot)
-		std::cout << "Float:  " << f << ".0f" << std::endl;
-	else
-		std::cout << "Float:  " << f << "f" << std::endl;
+	if (p == 0)
+		p = 1;
+	return (p);
 }
 
-static void	printDouble(double d, bool lvl, bool dot) {
-	if (lvl)
-		std::cout << "Double: " << d << ".0" << std::endl;
-	else if (dot)
-		std::cout << "Double: " << d << ".0" << std::endl;
-	else
-		std::cout << "Double: " << d << std::endl;
-}
+static void	printChar(char c) {	isprint(c) ? std::cout << "Char:   '" << c << "'" << std::endl : std::cout << "Char:   not printable" << std::endl;}
+
+static void	printInt(int i) {std::cout << "Int:    " << i << std::endl;}
+
+static void	printFloat(float f, int p) {std::cout << std::fixed << std::setprecision(p) << "Float:  " << f << "f" << std::endl;}
+
+static void	printDouble(double d, int p) {std::cout << std::fixed << std::setprecision(p) << "Double: " << d << std::endl;}
 
 static void	isChar(std::string input) {
 	std::stringstream 	ss(input);
@@ -71,8 +59,8 @@ static void	isChar(std::string input) {
 	
 	printChar(c);
 	printInt((int)c);
-	printFloat((float)c, true, false);
-	printDouble((double)c, true, false);
+	printFloat((float)c, 1);
+	printDouble((double)c, 1);
 }
 
 static void	isInt(std::string input) {
@@ -89,14 +77,16 @@ static void	isInt(std::string input) {
 		printInt(i);
 	else
 		std::cout << "Int:    impossible" << std::endl;
-	printFloat((float)i, true, false);
-	printDouble((double)i, true, false);
-	
+
+	printFloat((float)i, 1);
+	printDouble((double)i, 1);
 }
 
 static void	isFloat(std::string input) {
 	float	f = strtof(input.c_str(), NULL);
-	int		i = input.find_first_of('.');
+	int		p = get_precision(input);
+	if (p > 6)
+		p = 6;
 
 	if (f <= std::numeric_limits<unsigned char>::max() && f >= std::numeric_limits<unsigned char>::min())
 		printChar(static_cast<char>(f));
@@ -108,16 +98,16 @@ static void	isFloat(std::string input) {
 	else
 		std::cout << "Int:    impossible" << std::endl;
 	
-	if (i && input[i + 1] == '\0')
-		printFloat(f, false, true);
-	else
-		printFloat(f, false, false);
-	printDouble((double)f, false, false);	
+	printFloat(f, p);
+
+	printDouble((double)f, p);	
 }
 
 static void	isDouble(std::string input) {
-	double				d = strtod(input.c_str(), NULL);
-	int		i = input.find_first_of('.');
+	double	d = strtod(input.c_str(), NULL);
+	int		p = get_precision(input);
+	if (p > 15)
+		p = 15;
 	
 	if (d <= std::numeric_limits<unsigned char>::max() && d >= std::numeric_limits<unsigned char>::min())
 		printChar(static_cast<char>(d));
@@ -131,18 +121,12 @@ static void	isDouble(std::string input) {
 		
 	if (isnanf(static_cast<float>(d)) || isinff(static_cast<float>(d)))
 		std::cout << "Float:  " << static_cast<float>(d) << "f" << std::endl;
-	else if (d <= std::numeric_limits<float>::max() && d >= (std::numeric_limits<float>::max() * -1 - 1)) {
-		if (i && input[i + 1] == '\0')
-			printFloat(static_cast<float>(d), false, true);
-		else
-			printFloat(static_cast<float>(d), false, false);
-	}
+	else if (d <= std::numeric_limits<float>::max() && d >= (std::numeric_limits<float>::max() * -1 - 1))
+		printFloat(static_cast<float>(d), p);
 	else
 		std::cout << "Float:  impossible" << std::endl;
-	if (i && input[i + 1] == '\0')
-		printDouble(d, false, true);
-	else
-		printDouble(d, false, false);		
+		
+	printDouble(d, p);		
 }
 
 static std::string	check_input(std::string input) {
