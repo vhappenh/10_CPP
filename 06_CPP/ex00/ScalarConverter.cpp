@@ -6,7 +6,7 @@
 /*   By: vhappenh <vhappenh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 11:49:00 by vhappenh          #+#    #+#             */
-/*   Updated: 2023/10/10 17:42:18 by vhappenh         ###   ########.fr       */
+/*   Updated: 2023/10/10 17:43:33 by vhappenh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,9 +105,11 @@ static void	isFloat(std::string input) {
 
 static void	isDouble(std::string input) {
 	double	d = strtod(input.c_str(), NULL);
-	int		p = get_precision(input);
-	if (p > 15)
-		p = 15;
+	int		pf, pd = get_precision(input);
+	if (pd > 6)
+		pf = 6;
+	if (pd > 15)
+		pd = 15;
 	
 	if (d <= std::numeric_limits<unsigned char>::max() && d >= std::numeric_limits<unsigned char>::min())
 		printChar(static_cast<char>(d));
@@ -122,11 +124,11 @@ static void	isDouble(std::string input) {
 	if (isnanf(static_cast<float>(d)) || isinff(static_cast<float>(d)))
 		std::cout << "Float:  " << static_cast<float>(d) << "f" << std::endl;
 	else if (d <= std::numeric_limits<float>::max() && d >= (std::numeric_limits<float>::max() * -1 - 1))
-		printFloat(static_cast<float>(d), p);
+		printFloat(static_cast<float>(d), pf);
 	else
 		std::cout << "Float:  impossible" << std::endl;
 		
-	printDouble(d, p);		
+	printDouble(d, pd);		
 }
 
 static std::string	check_input(std::string input) {
