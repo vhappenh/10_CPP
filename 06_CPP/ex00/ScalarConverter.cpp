@@ -6,7 +6,7 @@
 /*   By: vhappenh <vhappenh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 11:49:00 by vhappenh          #+#    #+#             */
-/*   Updated: 2023/10/10 14:55:53 by vhappenh         ###   ########.fr       */
+/*   Updated: 2023/10/10 15:10:34 by vhappenh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -166,7 +166,6 @@ static std::string	check_input(std::string input) {
 void ScalarConverter::convert(std::string input) {
 	std::string type = check_input(input);
 
-	std::cout << type << std::endl;
 	if (type == "CHAR")
 		isChar(input);
 	else if (type == "INT")
