@@ -6,7 +6,7 @@
 /*   By: vhappenh <vhappenh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 11:49:00 by vhappenh          #+#    #+#             */
-/*   Updated: 2023/10/10 17:43:33 by vhappenh         ###   ########.fr       */
+/*   Updated: 2023/10/11 15:00:29 by vhappenh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ static void	isFloat(std::string input) {
 
 static void	isDouble(std::string input) {
 	double	d = strtod(input.c_str(), NULL);
-	int		pf, pd = get_precision(input);
+	int		pd = get_precision(input), pf = pd;
 	if (pd > 6)
 		pf = 6;
 	if (pd > 15)
