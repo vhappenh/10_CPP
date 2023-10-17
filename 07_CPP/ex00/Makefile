@@ -1,6 +1,6 @@
 NAME := templates
 
-CXXFLAGS := -Wall -Werror -Wextra -std=c++98 -MMD -MP -gdwarf-4
+CXXFLAGS := -Wall -Werror -Wextra -std=c++98 -MMD -MP
 
 CXX := c++
 

@@ -1,4 +1,4 @@
-NAME := iter
+NAME := array
 
 CXXFLAGS := -Wall -Werror -Wextra -std=c++98 -MMD -MP
 
