@@ -6,10 +6,11 @@
 /*   By: vhappenh <vhappenh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 15:08:14 by vhappenh          #+#    #+#             */
-/*   Updated: 2023/10/17 08:56:52 by vhappenh         ###   ########.fr       */
+/*   Updated: 2023/10/17 10:54:44 by vhappenh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#pragma once
 #include "Array.hpp"
 
 template <typename T>

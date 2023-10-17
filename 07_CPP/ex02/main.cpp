@@ -6,11 +6,12 @@
 /*   By: vhappenh <vhappenh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 18:30:04 by vhappenh          #+#    #+#             */
-/*   Updated: 2023/10/17 08:56:16 by vhappenh         ###   ########.fr       */
+/*   Updated: 2023/10/17 10:54:18 by vhappenh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Array.tpp"
+#include "Array.hpp"
 
 int main( void ) {
 	// first test with index out of bound
