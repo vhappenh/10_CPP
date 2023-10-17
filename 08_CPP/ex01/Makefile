@@ -1,4 +1,4 @@
-NAME := easyfind
+NAME := span
 
 CXXFLAGS := -Wall -Werror -Wextra -std=c++98 -MMD -MP
 
@@ -7,6 +7,7 @@ CXX := c++
 OBJ_P := obj/
 
 SRC := main.cpp\
+		Span.cpp
 
 OBJ := $(SRC:%.cpp=$(OBJ_P)%.o)
 

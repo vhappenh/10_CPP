@@ -1,28 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   easyfind.hpp                                       :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vhappenh <vhappenh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/17 10:40:02 by vhappenh          #+#    #+#             */
-/*   Updated: 2023/10/17 15:04:49 by vhappenh         ###   ########.fr       */
+/*   Created: 2023/10/17 15:05:25 by vhappenh          #+#    #+#             */
+/*   Updated: 2023/10/17 15:51:22 by vhappenh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
-#include <iostream>
-#include <deque>
-#include <iterator>
-#include <stdexcept>
-#include <algorithm>
+#include "Span.hpp"	
 
-template <typename T>
-typename T::iterator easyfind(T& cont, int n) {
-	typename T::iterator it = std::find(cont.begin(), cont.end(), n);
-	
-	if (it != cont.end())
-		return (it);
-	else
-		throw std::out_of_range("Element not found");
+int	main(void) {
+	Span x(10);
+
+	x.addNumber(3);
+	x.addNumber(0);
+	x.addNumber(100);
+	x.addNumber(-1);
+	x.printDeque();
+	return (0);
 }
