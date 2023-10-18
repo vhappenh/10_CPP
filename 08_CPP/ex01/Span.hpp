@@ -6,7 +6,7 @@
 /*   By: vhappenh <vhappenh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:05:37 by vhappenh          #+#    #+#             */
-/*   Updated: 2023/10/17 15:49:15 by vhappenh         ###   ########.fr       */
+/*   Updated: 2023/10/18 17:29:07 by vhappenh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include <deque>
 #include <algorithm>
 #include <exception>
+#include <limits>
 
 class Span {
 private:
@@ -27,4 +28,6 @@ public:
 
 	void	addNumber(int n);
 	void	printDeque(void);
+	long	shortestSpan(void);
+	long	longestSpan(void) const;
 } ;
