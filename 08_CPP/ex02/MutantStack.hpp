@@ -1,35 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Span.hpp                                           :+:      :+:    :+:   */
+/*   MutantStack.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vhappenh <vhappenh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/17 15:05:37 by vhappenh          #+#    #+#             */
-/*   Updated: 2023/10/19 13:34:42 by vhappenh         ###   ########.fr       */
+/*   Created: 2023/10/19 10:28:21 by vhappenh          #+#    #+#             */
+/*   Updated: 2023/10/19 12:59:27 by vhappenh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 #include <iostream>
-#include <deque>
-#include <algorithm>
-#include <exception>
-#include <limits>
+#include <stack>
+#include <iterator>
 
-class Span {
-private:
-	std::deque<int>	x;
-	unsigned int	n;
+template <typename T>
+class MutantStack : public std::stack<T> {
 public:
-	Span(unsigned int N = 0);
-	Span(const Span& other);
-	Span& operator=(const Span& other);
-	~Span();
+	MutantStack();
+	MutantStack(const MutantStack& other);
+	MutantStack& operator=(const MutantStack& other);
+	~MutantStack();
 
-	void	addNumber(int n);
-	void	addManyNumbers(std::deque<int>::iterator begin, std::deque<int>::iterator end);
-	long	shortestSpan(void);
-	long	longestSpan(void) const;
-	void	printDeque(void);
+	MutantStack* begin(std::stack<T> stack);
+	MutantStack* end(std::stack<T> stack);
 } ;

@@ -6,7 +6,7 @@
 /*   By: vhappenh <vhappenh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:05:40 by vhappenh          #+#    #+#             */
-/*   Updated: 2023/10/19 10:23:14 by vhappenh         ###   ########.fr       */
+/*   Updated: 2023/10/19 13:38:02 by vhappenh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,18 @@ void Span::addNumber(int nbr) {
 		x.push_back(nbr);
 }
 
+void	Span::addManyNumbers(std::deque<int>::iterator begin, std::deque<int>::iterator end) {
+	for (std::deque<int>::iterator it = begin; it < end; ++it)
+		addNumber(*it);
+}
+
 long	Span::shortestSpan(void) {
 	if (x.size() <= 1)
 		throw std::out_of_range("Not enough elements for span");
 		
 	long span = std::numeric_limits<long>::max();
 	long tmp;
-	for (std::deque<int>::iterator it = x.begin() + 1; it != x.end(); it++) {
+	for (std::deque<int>::iterator it = x.begin() + 1; it != x.end(); ++it) {
 		tmp = *it - *(it - 1);
 		if (tmp < span)
 			span = tmp;
@@ -61,7 +66,7 @@ long	Span::longestSpan(void) const {
 }
 
 void	Span::printDeque(void) {
-	for (std::deque<int>::iterator it = x.begin(); it != x.end(); it++)
+	for (std::deque<int>::iterator it = x.begin(); it != x.end(); ++it)
 		std::cout << *it << ", ";
 	std::cout << std::endl;
 }

@@ -6,43 +6,47 @@
 /*   By: vhappenh <vhappenh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:05:25 by vhappenh          #+#    #+#             */
-/*   Updated: 2023/10/19 10:22:59 by vhappenh         ###   ########.fr       */
+/*   Updated: 2023/10/19 13:39:24 by vhappenh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Span.hpp"
 
 int	main(void) {
+	std::deque<int> deq;
+	for (int i = 0; i < 10005; ++i) {
+		deq.push_back(rand());
+	}
+
 	//wrong attempt with too many values
+	std::cout << "----------first test----------\n";
 	try {
 		Span x(10000);
-		for (int i = 0; i < 10005; ++i) {
-			x.addNumber(rand());
-		}
-		std::cout << "longest span:  " << x.longestSpan() << "\n";
+		x.addManyNumbers(deq.begin(), deq.end());
 		std::cout << "shortest span: " << x.shortestSpan() << "\n";
+		std::cout << "longest span:  " << x.longestSpan() << "\n";
 	} catch (std::exception &e) {
 		std::cout << e.what() << "\n";
 	}
 
 	//wrong attempt with too little values
+	std::cout << "----------second test----------\n";
 	try {
 		Span x(1);
 		x.addNumber(1);
-		std::cout << "longest span:  " << x.longestSpan() << "\n";
 		std::cout << "shortest span: " << x.shortestSpan() << "\n";
+		std::cout << "longest span:  " << x.longestSpan() << "\n";
 	} catch (std::exception &e) {
 		std::cout << e.what() << "\n";
 	}
 
 	//proper attempt
+	std::cout << "----------third test----------\n";
 	try {
-		Span x(10000);
-		for (int i = 0; i < 10000; ++i) {
-			x.addNumber(rand());
-		}
-		std::cout << "longest span:  " << x.longestSpan() << "\n";
+		Span x(10010);
+		x.addManyNumbers(deq.begin(), deq.end());
 		std::cout << "shortest span: " << x.shortestSpan() << "\n";
+		std::cout << "longest span:  " << x.longestSpan() << "\n";
 	} catch (std::exception &e) {
 		std::cout << e.what() << "\n";
 	}
