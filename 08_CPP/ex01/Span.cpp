@@ -6,7 +6,7 @@
 /*   By: vhappenh <vhappenh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:05:40 by vhappenh          #+#    #+#             */
-/*   Updated: 2023/10/18 17:29:10 by vhappenh         ###   ########.fr       */
+/*   Updated: 2023/10/19 10:23:14 by vhappenh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,11 @@ Span::~Span() {}
 void Span::addNumber(int nbr) {
 	if (x.size() + 1 > n)
 		throw std::out_of_range("Too many nbrs");
-	x.push_back(nbr);
-	std::sort(x.begin(), x.end());
-}
-
-void	Span::printDeque(void) {
-	for (std::deque<int>::iterator it = x.begin(); it != x.end(); it++)
-		std::cout << *it << ", ";
-	std::cout << std::endl;
+	std::deque<int>::iterator it = std::upper_bound(x.begin(), x.end(), nbr);
+	if (it != x.end())
+		x.insert(it, nbr);
+	else
+		x.push_back(nbr);
 }
 
 long	Span::shortestSpan(void) {
@@ -61,4 +58,10 @@ long	Span::longestSpan(void) const {
 	if (x.size() <= 1)
 		throw std::out_of_range("Not enough elements for span");
 	return (*max_element(x.begin(), x.end()) - *min_element(x.begin(), x.end()));
+}
+
+void	Span::printDeque(void) {
+	for (std::deque<int>::iterator it = x.begin(); it != x.end(); it++)
+		std::cout << *it << ", ";
+	std::cout << std::endl;
 }

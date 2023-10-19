@@ -6,27 +6,49 @@
 /*   By: vhappenh <vhappenh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:05:25 by vhappenh          #+#    #+#             */
-/*   Updated: 2023/10/18 17:25:42 by vhappenh         ###   ########.fr       */
+/*   Updated: 2023/10/19 10:22:59 by vhappenh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Span.hpp"
 
 int	main(void) {
-	Span x(10000);
-
-	for (int i = 0; i < 10000; ++i) {
-		x.addNumber(rand());
+	//wrong attempt with too many values
+	try {
+		Span x(10000);
+		for (int i = 0; i < 10005; ++i) {
+			x.addNumber(rand());
+		}
+		std::cout << "longest span:  " << x.longestSpan() << "\n";
+		std::cout << "shortest span: " << x.shortestSpan() << "\n";
+	} catch (std::exception &e) {
+		std::cout << e.what() << "\n";
 	}
-	x.printDeque();
-	std::cout << "longest span:  " << x.longestSpan() << "\n";
-	std::cout << "shortest span: " << x.shortestSpan() << "\n";
+
+	//wrong attempt with too little values
+	try {
+		Span x(1);
+		x.addNumber(1);
+		std::cout << "longest span:  " << x.longestSpan() << "\n";
+		std::cout << "shortest span: " << x.shortestSpan() << "\n";
+	} catch (std::exception &e) {
+		std::cout << e.what() << "\n";
+	}
+
+	//proper attempt
+	try {
+		Span x(10000);
+		for (int i = 0; i < 10000; ++i) {
+			x.addNumber(rand());
+		}
+		std::cout << "longest span:  " << x.longestSpan() << "\n";
+		std::cout << "shortest span: " << x.shortestSpan() << "\n";
+	} catch (std::exception &e) {
+		std::cout << e.what() << "\n";
+	}
 	return (0);
 }
 
-//	#include <time.h>
-//	clock_t t = clock();
-//	std::cout << (clock() - t) / (long double)CLOCKS_PER_SEC << "\n";
 
 // int main()
 // {
