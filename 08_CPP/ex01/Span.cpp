@@ -6,7 +6,7 @@
 /*   By: vhappenh <vhappenh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:05:40 by vhappenh          #+#    #+#             */
-/*   Updated: 2023/10/19 13:38:02 by vhappenh         ###   ########.fr       */
+/*   Updated: 2023/10/19 15:06:12 by vhappenh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ void Span::addNumber(int nbr) {
 		x.push_back(nbr);
 }
 
-void	Span::addManyNumbers(std::deque<int>::iterator begin, std::deque<int>::iterator end) {
-	for (std::deque<int>::iterator it = begin; it < end; ++it)
+void	Span::addManyNumbers(std::vector<int>::iterator begin, std::vector<int>::iterator end) {
+	for (std::vector<int>::iterator it = begin; it < end; ++it)
 		addNumber(*it);
 }
 

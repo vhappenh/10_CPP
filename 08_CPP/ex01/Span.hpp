@@ -6,13 +6,14 @@
 /*   By: vhappenh <vhappenh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:05:37 by vhappenh          #+#    #+#             */
-/*   Updated: 2023/10/19 13:34:42 by vhappenh         ###   ########.fr       */
+/*   Updated: 2023/10/19 15:06:32 by vhappenh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 #include <iostream>
 #include <deque>
+#include <vector>
 #include <algorithm>
 #include <exception>
 #include <limits>
@@ -28,7 +29,7 @@ public:
 	~Span();
 
 	void	addNumber(int n);
-	void	addManyNumbers(std::deque<int>::iterator begin, std::deque<int>::iterator end);
+	void	addManyNumbers(std::vector<int>::iterator begin, std::vector<int>::iterator end);
 	long	shortestSpan(void);
 	long	longestSpan(void) const;
 	void	printDeque(void);

@@ -1,4 +1,4 @@
-NAME := span
+NAME := mutant
 
 CXXFLAGS := -Wall -Werror -Wextra -std=c++98 -MMD -MP
 
@@ -7,7 +7,6 @@ CXX := c++
 OBJ_P := obj/
 
 SRC := main.cpp\
-		MutantStack.cpp
 
 OBJ := $(SRC:%.cpp=$(OBJ_P)%.o)
 

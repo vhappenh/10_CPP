@@ -6,14 +6,14 @@
 /*   By: vhappenh <vhappenh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:05:25 by vhappenh          #+#    #+#             */
-/*   Updated: 2023/10/19 13:39:24 by vhappenh         ###   ########.fr       */
+/*   Updated: 2023/10/19 15:09:14 by vhappenh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Span.hpp"
 
 int	main(void) {
-	std::deque<int> deq;
+	std::vector<int> deq;
 	for (int i = 0; i < 10005; ++i) {
 		deq.push_back(rand());
 	}
