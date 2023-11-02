@@ -6,20 +6,49 @@
 /*   By: vhappenh <vhappenh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 13:35:44 by vhappenh          #+#    #+#             */
-/*   Updated: 2023/11/02 13:51:54 by vhappenh         ###   ########.fr       */
+/*   Updated: 2023/11/02 18:48:34 by vhappenh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
 
 static bool	get_date(std::string line, std::tm& date) {
-	std::string::iterator 	it;
+	size_t 	pos;
 
+	/* general check */
+	if (line.find_first_of(',') == std::string::npos) {
+		std::cerr << "Invalid data input. No seperator!\n";
+		return (true);
+	}
+	
+	/* reading year and protection */
 	date.tm_year = std::atoi(line.c_str());
-	line.erase(line.begin(), line.begin() + line.find('-') + 1);
+	if (date.tm_year > 9999) {
+		std::cerr << "Invalid data input. Date absurdly high!\n";
+	}
+	
+	/* skipping to read month */
+	pos = line.find('-');
+	if (pos == std::string::npos || pos > 4) {
+		std::cerr << "Invalid data input. Date config wrong!\n";
+		return (true);
+	}
+	line.erase(line.begin(), line.begin() + pos + 1);
 	date.tm_mon = std::atoi(line.c_str());
-	line.erase(line.begin(), line.begin() + line.find('-') + 1);
+	
+	/* skipping to read day */
+	pos = line.find('-');
+	if (pos == std::string::npos || pos > 2) {
+		std::cerr << "Invalid data input. Date config wrong!\n";
+		return (true);
+	}
+	line.erase(line.begin(), line.begin() + pos + 1);
 	date.tm_mday = std::atoi(line.c_str());
+	
+	/* just for checking the values */
+	// std::cout << "y: " << date.tm_year << std::endl;
+	// std::cout << "m: " << date.tm_mon << std::endl;
+	// std::cout << "d: " << date.tm_mday << std::endl;
 	return (false);
 }
 
@@ -31,10 +60,6 @@ static bool	get_value(std::string line, int& value) {
 			it++;
 			break ;
 		}
-	}
-	if (it == line.end()) {
-		std::cerr << "Invalid data input\n";
-		return (true);
 	}
 	value = std::atoi(&(*it));
 	return (false);
@@ -63,8 +88,8 @@ bool	exchange(char *filename) {
 				return (true);
 			}
 			date = mktime(&raw_date);
-			std::cout << value << std::endl;
-			std::cout << date << std::endl;
+			// std::cout << value << std::endl;
+			// std::cout << date << std::endl;
 			//data.insert({date, value});
 		}
 	}
