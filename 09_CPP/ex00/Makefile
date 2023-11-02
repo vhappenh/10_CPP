@@ -1,12 +1,13 @@
 NAME := btc
 
-CXXFLAGS := -Wall -Werror -Wextra -std=c++98 -MMD -MP
+CXXFLAGS := -Wall -Werror -Wextra -std=c++98 -MMD -MP -g
 
 CXX := c++
 
 OBJ_P := obj/
 
 SRC := main.cpp\
+		BitcoinExchange.cpp
 
 OBJ := $(SRC:%.cpp=$(OBJ_P)%.o)
 
