@@ -6,25 +6,32 @@
 /*   By: vhappenh <vhappenh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 13:35:44 by vhappenh          #+#    #+#             */
-/*   Updated: 2023/11/02 18:48:34 by vhappenh         ###   ########.fr       */
+/*   Updated: 2023/11/03 15:28:49 by vhappenh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
 
-static bool	get_date(std::string line, std::tm& date) {
+static bool	get_date(std::string line, std::tm& date, char c) {
 	size_t 	pos;
-
+	size_t	found;
+	
 	/* general check */
-	if (line.find_first_of(',') == std::string::npos) {
+	if (line.find_first_of(c) == std::string::npos) {
 		std::cerr << "Invalid data input. No seperator!\n";
+		return (true);
+	}
+	found = line.find_first_not_of("0123456789.-|, ");
+	if (found != std::string::npos) {
+		std::cerr << "Invalid data input. Invalid character!\n";
 		return (true);
 	}
 	
 	/* reading year and protection */
 	date.tm_year = std::atoi(line.c_str());
 	if (date.tm_year > 9999) {
-		std::cerr << "Invalid data input. Date absurdly high!\n";
+		std::cerr << "Invalid data input. Year absurdly high!\n";
+		return (true);
 	}
 	
 	/* skipping to read month */
@@ -34,7 +41,7 @@ static bool	get_date(std::string line, std::tm& date) {
 		return (true);
 	}
 	line.erase(line.begin(), line.begin() + pos + 1);
-	date.tm_mon = std::atoi(line.c_str());
+	date.tm_mon = std::atoi(line.c_str()) - 1;
 	
 	/* skipping to read day */
 	pos = line.find('-');
@@ -44,55 +51,112 @@ static bool	get_date(std::string line, std::tm& date) {
 	}
 	line.erase(line.begin(), line.begin() + pos + 1);
 	date.tm_mday = std::atoi(line.c_str());
-	
-	/* just for checking the values */
-	// std::cout << "y: " << date.tm_year << std::endl;
-	// std::cout << "m: " << date.tm_mon << std::endl;
-	// std::cout << "d: " << date.tm_mday << std::endl;
 	return (false);
 }
 
-static bool	get_value(std::string line, int& value) {
+static bool	get_value(std::string line, float& value, char c) {
 	std::string::iterator it;
 	
 	for (it = line.begin(); it < line.end(); it++) {
-		if (*it == ',') {
+		if (*it == c) {
 			it++;
 			break ;
 		}
 	}
-	value = std::atoi(&(*it));
+	value = std::atof(&(*it));
 	return (false);
 }
 
-bool	exchange(char *filename) {
+static bool	compare_dates(std::tm one, std::tm two) {
+	if (one.tm_year != two.tm_year || one.tm_mon != two.tm_mon || one.tm_mday != two.tm_mday)
+		return (true);
+	return (false);
+}
+
+static bool	fill_map(std::map<time_t, float>& data) {
 	std::ifstream 			file;
 	std::string				line;
-	std::map<time_t, int>	data;
 	std::tm					raw_date;
+	std::tm					check_date;
 	time_t					date;
-	int						value;
+	float					value;
 
-	(void)filename;
 	std::memset(&raw_date, 0, sizeof(raw_date));
-	file.open("datatest.csv");
+	std::memset(&check_date, 0, sizeof(check_date));
+	file.open("data.csv");
 	if (file.is_open()) {
-		std::getline(file, line);
 		while (std::getline(file, line)) {
-			if (get_date(line, raw_date)) {
-				file.close();
-				return (true);
-			}
-			if (get_value(line, value)) {
+			if (line == "date,exchange_rate")
+				std::getline(file, line);
+			if (get_date(line, raw_date, ',') || get_date(line, check_date, ',')) {
 				file.close();
 				return (true);
 			}
 			date = mktime(&raw_date);
-			// std::cout << value << std::endl;
-			// std::cout << date << std::endl;
-			//data.insert({date, value});
+			if (compare_dates(raw_date, check_date)) {
+				std::cerr << "Invalid data input. Wrong date!\n";
+				file.close();
+				return (true);
+			}
+			if (get_value(line, value, ',')) {
+				file.close();
+				return (true);
+			}
+			data.insert(std::make_pair(date, value));
 		}
+		file.close();
 	}
-	file.close();
+	return (false);
+}
+
+static bool	check_and_compare_input(char *filename, std::map<time_t, float> data) {
+	std::ifstream 			file;
+	std::string				line;
+	std::tm					raw_date;
+	std::tm					check_date;
+	time_t					date;
+	float					value;
+
+	std::memset(&raw_date, 0, sizeof(raw_date));
+	std::memset(&check_date, 0, sizeof(check_date));
+	file.open(filename);
+	if (file.is_open()) {
+		while (std::getline(file, line)) {
+			if (line == "date | value")
+				std::getline(file, line);
+			if (!get_date(line, raw_date, '|')) {
+				get_date(line, check_date, '|');
+				date = mktime(&raw_date);
+				if (compare_dates(raw_date, check_date))
+					std::cerr << "Invalid data input. Wrong date!\n";
+				else {
+					if (get_value(line, value, '|')) {
+						file.close();
+						return (true);
+					}
+					if (value < 0 || value > 1000)
+						std::cerr << "Invalid value input. Wrong btc amount!\n";
+					else {
+						std::map<time_t, float>::iterator it = data.find(date);
+						if (it != data.end())
+							std::cout << line << " = " << it->second * value << "\n";
+						else
+							std::cout << line << " = " << data.lower_bound(date)->second * value << "\n";	
+					}	
+				}
+			}
+		}
+		file.close();
+	}
+	return (false);
+}
+
+bool	exchange(char *filename) {
+	std::map<time_t, float>	data;
+
+	if (fill_map(data))
+		return (true);
+	if (check_and_compare_input(filename, data))
+		return (true);
 	return (false);
 }
