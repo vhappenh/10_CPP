@@ -6,7 +6,7 @@
 /*   By: vhappenh <vhappenh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 13:35:44 by vhappenh          #+#    #+#             */
-/*   Updated: 2023/11/03 15:28:49 by vhappenh         ###   ########.fr       */
+/*   Updated: 2023/11/03 15:46:53 by vhappenh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static bool	get_date(std::string line, std::tm& date, char c) {
 	size_t 	pos;
 	size_t	found;
 	
-	/* general check */
+	/* general checks */
 	if (line.find_first_of(c) == std::string::npos) {
 		std::cerr << "Invalid data input. No seperator!\n";
 		return (true);
@@ -63,7 +63,12 @@ static bool	get_value(std::string line, float& value, char c) {
 			break ;
 		}
 	}
-	value = std::atof(&(*it));
+	if (*it == ' ' || isdigit(*it))
+		value = std::atof(&(*it));
+	else {
+		std::cerr << "Invalid value input. Format after seperator wrong!\n";
+		return (true);
+	}
 	return (false);
 }
 
@@ -130,18 +135,16 @@ static bool	check_and_compare_input(char *filename, std::map<time_t, float> data
 				if (compare_dates(raw_date, check_date))
 					std::cerr << "Invalid data input. Wrong date!\n";
 				else {
-					if (get_value(line, value, '|')) {
-						file.close();
-						return (true);
-					}
-					if (value < 0 || value > 1000)
-						std::cerr << "Invalid value input. Wrong btc amount!\n";
-					else {
-						std::map<time_t, float>::iterator it = data.find(date);
-						if (it != data.end())
-							std::cout << line << " = " << it->second * value << "\n";
-						else
-							std::cout << line << " = " << data.lower_bound(date)->second * value << "\n";	
+					if (!get_value(line, value, '|')) {
+						if (value < 0 || value > 1000)
+							std::cerr << "Invalid value input. Wrong btc amount!\n";
+						else {
+							std::map<time_t, float>::iterator it = data.find(date);
+							if (it != data.end())
+								std::cout << line << " = " << it->second * value << "\n";
+							else
+								std::cout << line << " = " << data.lower_bound(date)->second * value << "\n";	
+						}
 					}	
 				}
 			}
