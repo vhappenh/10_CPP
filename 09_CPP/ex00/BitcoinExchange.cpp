@@ -6,7 +6,7 @@
 /*   By: vhappenh <vhappenh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 13:35:44 by vhappenh          #+#    #+#             */
-/*   Updated: 2023/11/03 15:46:53 by vhappenh         ###   ########.fr       */
+/*   Updated: 2023/11/04 15:43:26 by vhappenh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,10 @@ static bool	fill_map(std::map<time_t, float>& data) {
 		}
 		file.close();
 	}
+	if (data.empty()) {
+		std::cerr << "Invalid data input. Empty file!\n";
+		return (true);
+	}
 	return (false);
 }
 
@@ -142,8 +146,16 @@ static bool	check_and_compare_input(char *filename, std::map<time_t, float> data
 							std::map<time_t, float>::iterator it = data.find(date);
 							if (it != data.end())
 								std::cout << line << " = " << it->second * value << "\n";
-							else
-								std::cout << line << " = " << data.lower_bound(date)->second * value << "\n";	
+							else {
+								std::map<time_t, float>::iterator lb = data.lower_bound(date);
+								if (lb != data.begin()) {
+									lb--;	
+									std::cout << line << " = " << lb->second * value << "\n";	
+								}
+								else
+									std::cout << "No key or smaller key found\n!";	
+								
+							}
 						}
 					}	
 				}
