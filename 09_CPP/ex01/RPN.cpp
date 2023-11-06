@@ -6,7 +6,7 @@
 /*   By: vhappenh <vhappenh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 16:52:03 by vhappenh          #+#    #+#             */
-/*   Updated: 2023/11/06 14:18:28 by vhappenh         ###   ########.fr       */
+/*   Updated: 2023/11/06 14:21:28 by vhappenh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@ int		RPN::resolve(char *input) {
 				ss << r;
 				todo.push(ss.str());
 			}
+			else if (isdigit(todo.top().c_str()[0]))
+				;
 			else {	
 				throw std::logic_error("Error while resolving stack\n");
 			}
