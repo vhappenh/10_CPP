@@ -6,7 +6,7 @@
 /*   By: vhappenh <vhappenh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 16:52:03 by vhappenh          #+#    #+#             */
-/*   Updated: 2023/11/06 14:21:28 by vhappenh         ###   ########.fr       */
+/*   Updated: 2023/11/07 16:04:09 by vhappenh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ static bool	isoperator(char c) {
 	return (false);
 }
 
-//TODO adapt the int n[] so that is adaptable for different inputs where I can have more than 3 numbers stored at once
 int		RPN::resolve(char *input) {
 	std::stack<std::string> todo;
 	int						r;
@@ -38,37 +37,44 @@ int		RPN::resolve(char *input) {
 			;
 		else
 			throw std::logic_error("Error while creating stack\n");
-			
+		
 		//checking and handling if operations are doable
-		if (todo.size() >= 3) {
-			
-			if (todo.top().c_str()[0] == '+' || todo.top().c_str()[0] == '-' || todo.top().c_str()[0] == '*' || todo.top().c_str()[0] == '/') {
-				op = todo.top().c_str()[0];
-				todo.pop();
+		if (todo.top().c_str()[0] == '+' || (todo.top().c_str()[0] == '-' && !isdigit(todo.top().c_str()[1])) || todo.top().c_str()[0] == '*' || todo.top().c_str()[0] == '/') {
+			op = todo.top().c_str()[0];
+			todo.pop();
+			if (todo.size()) {
 				n[0] = std::atoi(todo.top().c_str());
 				todo.pop();
+			}
+			else
+				throw std::logic_error("Error while resolving stack\n");
+			if (todo.size()) {
 				n[1] = std::atoi(todo.top().c_str());
 				todo.pop();
-				
-				if (op == '+')
-					r = n[0] + n[1];
-				else if (op == '-')
-					r = n[1] - n[0];
-				else if (op == '*')
-					r = n[0] * n[1];
-				else
-					r = n[1] / n[0];
+			}
+			else
+				throw std::logic_error("Error while resolving stack\n");			
+			if (op == '+')
+				r = n[0] + n[1];
+			else if (op == '-')
+				r = n[1] - n[0];
+			else if (op == '*')
+				r = n[0] * n[1];
+			else
+				r = n[1] / n[0];
 
-				std::stringstream ss;
-				ss << r;
-				todo.push(ss.str());
-			}
-			else if (isdigit(todo.top().c_str()[0]))
-				;
-			else {	
-				throw std::logic_error("Error while resolving stack\n");
-			}
+			std::stringstream ss;
+			ss << r;
+			todo.push(ss.str());
 		}
-	}	
-	return (std::atoi(todo.top().c_str()));
+		else if (isdigit(todo.top().c_str()[0]) || (todo.top().c_str()[0] == '-' && isdigit(todo.top().c_str()[1])))
+			;
+		else {	
+			throw std::logic_error("Error while resolving stack\n");
+		}
+	}
+	if (todo.size() == 1)
+		return (std::atoi(todo.top().c_str()));
+	else
+		throw std::logic_error("Could not resolve stack\n");
 }

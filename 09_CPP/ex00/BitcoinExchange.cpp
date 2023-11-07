@@ -6,7 +6,7 @@
 /*   By: vhappenh <vhappenh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 13:35:44 by vhappenh          #+#    #+#             */
-/*   Updated: 2023/11/06 13:27:13 by vhappenh         ###   ########.fr       */
+/*   Updated: 2023/11/07 15:32:24 by vhappenh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ static bool	get_date(std::string line, std::tm& date, char c) {
 	
 	/* reading year and protection */
 	date.tm_year = std::atoi(line.c_str());
-	if (date.tm_year > 9999) {
-		std::cerr << "Invalid data input. Year absurdly high!\n";
+	if (date.tm_year > 9999 || date.tm_year < 2009) {
+		std::cerr << "Invalid data input. Year out of range!\n";
 		return (true);
 	}
 	
@@ -63,7 +63,13 @@ static bool	get_value(std::string line, float& value, char c) {
 			break ;
 		}
 	}
-	if (*it == ' ' || isdigit(*it))
+	if (*it == ' ')
+		it++;
+	if (line.find_first_of('.') != line.find_last_of('.')) {
+		std::cerr << "Invalid value input. Format after seperator wrong!\n";
+		return (true);		
+	}
+	else if (isdigit(*it))
 		value = std::atof(&(*it));
 	else {
 		std::cerr << "Invalid value input. Format after seperator wrong!\n";
@@ -153,7 +159,7 @@ static bool	check_and_compare_input(char *filename, std::map<time_t, float> data
 									std::cout << line << " = " << lb->second * value << "\n";	
 								}
 								else
-									std::cout << "No key or smaller key found\n!";	
+									std::cout << "No date or smaller date found!\n";	
 								
 							}
 						}
