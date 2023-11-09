@@ -6,7 +6,7 @@
 /*   By: vhappenh <vhappenh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 16:52:03 by vhappenh          #+#    #+#             */
-/*   Updated: 2023/11/07 16:04:09 by vhappenh         ###   ########.fr       */
+/*   Updated: 2023/11/09 12:17:50 by vhappenh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,10 @@ static bool	isoperator(char c) {
 		return (true);
 	return (false);
 }
-
-int		RPN::resolve(char *input) {
+int	RPN::resolve(char *input) {
 	std::stack<std::string> todo;
-	int						r;
-	int						n[2];
+	double					r;
+	double					n[2];
 	char				 	op;
 		
 	for (int i = 0; input[i]; i++) {
@@ -39,17 +38,17 @@ int		RPN::resolve(char *input) {
 			throw std::logic_error("Error while creating stack\n");
 		
 		//checking and handling if operations are doable
-		if (todo.top().c_str()[0] == '+' || (todo.top().c_str()[0] == '-' && !isdigit(todo.top().c_str()[1])) || todo.top().c_str()[0] == '*' || todo.top().c_str()[0] == '/') {
+		if (todo.size() && (todo.top().c_str()[0] == '+' || (todo.top().c_str()[0] == '-' && !isdigit(todo.top().c_str()[1])) || todo.top().c_str()[0] == '*' || todo.top().c_str()[0] == '/')) {
 			op = todo.top().c_str()[0];
 			todo.pop();
 			if (todo.size()) {
-				n[0] = std::atoi(todo.top().c_str());
+				n[0] = std::strtod(todo.top().c_str(), NULL);
 				todo.pop();
 			}
 			else
 				throw std::logic_error("Error while resolving stack\n");
 			if (todo.size()) {
-				n[1] = std::atoi(todo.top().c_str());
+				n[1] = std::strtod(todo.top().c_str(), NULL);
 				todo.pop();
 			}
 			else
@@ -64,9 +63,13 @@ int		RPN::resolve(char *input) {
 				r = n[1] / n[0];
 
 			std::stringstream ss;
+			if (r <= std::numeric_limits<int>::min() || r >= std::numeric_limits<int>::max())
+				throw std::runtime_error("Error while resolving stack. Out of int range\n");
 			ss << r;
 			todo.push(ss.str());
 		}
+		else if (!todo.size())
+			;
 		else if (isdigit(todo.top().c_str()[0]) || (todo.top().c_str()[0] == '-' && isdigit(todo.top().c_str()[1])))
 			;
 		else {	
@@ -74,7 +77,7 @@ int		RPN::resolve(char *input) {
 		}
 	}
 	if (todo.size() == 1)
-		return (std::atoi(todo.top().c_str()));
+		return (std::strtod(todo.top().c_str(), NULL));
 	else
 		throw std::logic_error("Could not resolve stack\n");
 }

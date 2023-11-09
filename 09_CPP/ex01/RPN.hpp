@@ -6,7 +6,7 @@
 /*   By: vhappenh <vhappenh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 16:52:01 by vhappenh          #+#    #+#             */
-/*   Updated: 2023/11/06 13:49:39 by vhappenh         ###   ########.fr       */
+/*   Updated: 2023/11/09 12:16:35 by vhappenh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include <cstdlib>
 #include <stack>
 #include <sstream>
+#include <limits>
 
 class RPN {
 private:
