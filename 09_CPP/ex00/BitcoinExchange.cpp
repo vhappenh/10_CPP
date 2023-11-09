@@ -6,7 +6,7 @@
 /*   By: vhappenh <vhappenh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 13:35:44 by vhappenh          #+#    #+#             */
-/*   Updated: 2023/11/07 15:32:24 by vhappenh         ###   ########.fr       */
+/*   Updated: 2023/11/09 13:38:04 by vhappenh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,6 +117,10 @@ static bool	fill_map(std::map<time_t, float>& data) {
 		}
 		file.close();
 	}
+	else {
+		std::cerr << "Invalid data input. Could not open data.csv\n";
+		return (true);
+	}
 	if (data.empty()) {
 		std::cerr << "Invalid data input. Empty file!\n";
 		return (true);
@@ -168,6 +172,10 @@ static bool	check_and_compare_input(char *filename, std::map<time_t, float> data
 			}
 		}
 		file.close();
+	}
+	else {
+		std::cerr << "Invalid data input. Could not open input-file\n";
+		return (true);
 	}
 	return (false);
 }
