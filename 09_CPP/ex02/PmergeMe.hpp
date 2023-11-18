@@ -6,11 +6,12 @@
 /*   By: vhappenh <vhappenh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 14:24:11 by vhappenh          #+#    #+#             */
-/*   Updated: 2023/11/09 13:31:05 by vhappenh         ###   ########.fr       */
+/*   Updated: 2023/11/18 15:15:49 by vhappenh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
+#include <algorithm>
 #include <list>
 #include <vector>
 #include <cstdlib>
@@ -23,6 +24,6 @@ private:
 	PmergeMe& operator=(const PmergeMe& other);
 	~PmergeMe();
 public:
-	static void	solve(std::vector<unsigned int>& cont);
-	static void	solve(std::list<unsigned int>& cont);
+	static std::vector<unsigned int> solve(std::vector<unsigned int> pend);
+	static void	solve(std::list<unsigned int>& pend);
 } ;
