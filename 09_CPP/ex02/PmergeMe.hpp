@@ -6,7 +6,7 @@
 /*   By: vhappenh <vhappenh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 14:24:11 by vhappenh          #+#    #+#             */
-/*   Updated: 2023/11/18 15:15:49 by vhappenh         ###   ########.fr       */
+/*   Updated: 2023/11/23 08:32:07 by vhappenh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <vector>
 #include <cstdlib>
 #include <limits>
+#include <ctime>
 
 class PmergeMe {
 private:
@@ -24,6 +25,6 @@ private:
 	PmergeMe& operator=(const PmergeMe& other);
 	~PmergeMe();
 public:
-	static std::vector<unsigned int> solve(std::vector<unsigned int> pend);
+	static std::vector<unsigned int> solve(char **input);
 	static void	solve(std::list<unsigned int>& pend);
 } ;

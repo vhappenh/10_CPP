@@ -6,12 +6,11 @@
 /*   By: vhappenh <vhappenh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 14:23:30 by vhappenh          #+#    #+#             */
-/*   Updated: 2023/11/18 15:18:31 by vhappenh         ###   ########.fr       */
+/*   Updated: 2023/11/23 09:02:09 by vhappenh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
-
 
 static bool	check_input(int ac, char **av) {
 	double 						d;
@@ -46,33 +45,33 @@ static void print_input(char **av) {
 int	main(int ac, char **av) {
 	std::vector<unsigned int> 	vecty;
 	std::list<unsigned int>		listy;
-	time_t						start[2], end[2];
+	clock_t						start[2], end[2];
 
 	if (check_input(ac, av))
 		return (1);
 	print_input(av);
 
 	/* start of vector version */
-	time(&start[0]);
-	for (int i = 1; av[i]; i++)
-		vecty.push_back(atoi(av[i]));
-	vecty = PmergeMe::solve(vecty);
-	time(&end[0]);
-
-	std::cout << "Result: ";
+	start[0] = clock();
+	vecty = PmergeMe::solve(&av[1]);
+	std::cout << "Result vect: ";
 	for (std::vector<unsigned int>::iterator it = vecty.begin(); it != vecty.end(); it++) {
 		std::cout << *it << " "; 
 	}
+	end[0] = clock();
+
 	
 	/* start of list version */
-	// time(&start[1]);
-	// for (int i = 1; av[i]; i++)
-	// 	listy.push_back(atoi(av[i]));
-	// PmergeMe::solve(listy);
-	// time(&end[1]);
+	// start[1] = clock();
+	// listy = PmergeMe::solve(listy);
+	// 	for (std::list<unsigned int>::iterator it = listy.begin(); it != listy.end(); it++) {
+	// 	std::cout << *it << " "; 
+	// }
+	// end[1] = clock();
+	
 	/* print time */
-	std::cout  << "\nTime passed using vect: " << start[0] - end[0] << "\n";
-	//std::cout  << "Time passed using list: " << start[1] - end[1] << "\n";
+	std::cout  << "\nTime passed using vect: " << end[0] - start[0] << "\n";
+	//std::cout  << "Time passed using list: " << end[1] - start[1] << "\n";
 
 	return (0);
 }
