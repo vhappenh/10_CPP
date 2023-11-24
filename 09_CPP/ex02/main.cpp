@@ -6,7 +6,7 @@
 /*   By: vhappenh <vhappenh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 14:23:30 by vhappenh          #+#    #+#             */
-/*   Updated: 2023/11/23 09:02:09 by vhappenh         ###   ########.fr       */
+/*   Updated: 2023/11/24 11:44:09 by vhappenh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static void print_input(char **av) {
 
 int	main(int ac, char **av) {
 	std::vector<unsigned int> 	vecty;
-	std::list<unsigned int>		listy;
+	std::deque<unsigned int>	dequy;
 	clock_t						start[2], end[2];
 
 	if (check_input(ac, av))
@@ -53,25 +53,27 @@ int	main(int ac, char **av) {
 
 	/* start of vector version */
 	start[0] = clock();
-	vecty = PmergeMe::solve(&av[1]);
-	std::cout << "Result vect: ";
+	vecty = PmergeMe::vec_solve(&av[1]);
+	std::cout << "Result vector: ";
 	for (std::vector<unsigned int>::iterator it = vecty.begin(); it != vecty.end(); it++) {
 		std::cout << *it << " "; 
 	}
 	end[0] = clock();
 
+	std::cout << "\n";
 	
 	/* start of list version */
-	// start[1] = clock();
-	// listy = PmergeMe::solve(listy);
-	// 	for (std::list<unsigned int>::iterator it = listy.begin(); it != listy.end(); it++) {
-	// 	std::cout << *it << " "; 
-	// }
-	// end[1] = clock();
+	start[1] = clock();
+	dequy = PmergeMe::deq_solve(&av[1]);
+	std::cout << "Result deque:  ";
+	for (std::deque<unsigned int>::iterator it = dequy.begin(); it != dequy.end(); it++) {
+		std::cout << *it << " "; 
+	}
+	end[1] = clock();
 	
 	/* print time */
-	std::cout  << "\nTime passed using vect: " << end[0] - start[0] << "\n";
-	//std::cout  << "Time passed using list: " << end[1] - start[1] << "\n";
+	std::cout  << "\nTime passed using vector: " << end[0] - start[0] << "\n";
+	std::cout  << "Time passed using deque:  " << end[1] - start[1] << "\n";
 
 	return (0);
 }
