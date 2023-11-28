@@ -6,7 +6,7 @@
 /*   By: vhappenh <vhappenh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 14:23:30 by vhappenh          #+#    #+#             */
-/*   Updated: 2023/11/25 13:22:54 by vhappenh         ###   ########.fr       */
+/*   Updated: 2023/11/28 11:18:34 by vhappenh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,9 @@ int	main(int ac, char **av) {
 	end[1] = clock();
 	
 	/* print time */
-	std::cout  << "\nTime passed using vector: " << end[0] - start[0] << "\n";
-	std::cout  << "Time passed using deque:  " << end[1] - start[1] << "\n";
+	std::cout << "\n";
+	std::cout << "Time passed using vector: " << end[0] - start[0] << "us\n";
+	std::cout << "Time passed using deque:  " << end[1] - start[1] << "us\n";
 
 	return (0);
 }

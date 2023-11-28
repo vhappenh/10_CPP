@@ -6,7 +6,7 @@
 /*   By: vhappenh <vhappenh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 14:24:11 by vhappenh          #+#    #+#             */
-/*   Updated: 2023/11/25 15:23:31 by vhappenh         ###   ########.fr       */
+/*   Updated: 2023/11/28 11:18:22 by vhappenh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,9 @@
 #include <limits>
 #include <ctime>
 
-typedef std::pair<unsigned int, long> spair;
-typedef std::vector<std::vector<spair >	> svec;
+typedef std::pair<unsigned int, long> 	spair;
+typedef std::vector<spair>  			svec;
+typedef std::deque<spair> 				sdeq;
 
 class PmergeMe {
 private:
