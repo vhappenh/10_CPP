@@ -6,7 +6,7 @@
 /*   By: vhappenh <vhappenh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 16:52:03 by vhappenh          #+#    #+#             */
-/*   Updated: 2023/11/09 12:17:50 by vhappenh         ###   ########.fr       */
+/*   Updated: 2023/11/28 18:36:18 by vhappenh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,11 @@ int	RPN::resolve(char *input) {
 				r = n[1] - n[0];
 			else if (op == '*')
 				r = n[0] * n[1];
-			else
+			else {
+				if (n[0] == 0)
+					throw std::runtime_error("Division by 0 invalid. Undefined behaviour expected\n");
 				r = n[1] / n[0];
+			}
 
 			std::stringstream ss;
 			if (r <= std::numeric_limits<int>::min() || r >= std::numeric_limits<int>::max())

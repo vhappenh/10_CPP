@@ -6,7 +6,7 @@
 /*   By: vhappenh <vhappenh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 14:23:30 by vhappenh          #+#    #+#             */
-/*   Updated: 2023/11/28 12:51:07 by vhappenh         ###   ########.fr       */
+/*   Updated: 2023/11/28 18:47:58 by vhappenh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static bool	check_input(int ac, char **av) {
 	double 						d;
-	
+	std::vector<std::string>	store;
 	if (ac == 1) {
 		std::cout << "No input to process!\n";
 		return (true);
@@ -30,7 +30,13 @@ static bool	check_input(int ac, char **av) {
 			std::cerr << "Input out of unsigned int range!\n";
 			return (true);
 		}
+		store.push_back(lol);
 	}
+	// if (check_for_doubles) {
+	// 	std::cerr << "No doubles in input allowed!\n";
+	// 		return (true);
+	// 	}
+	// }
 	return (false);
 }
 

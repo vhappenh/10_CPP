@@ -6,7 +6,7 @@
 /*   By: vhappenh <vhappenh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 14:23:59 by vhappenh          #+#    #+#             */
-/*   Updated: 2023/11/28 12:50:35 by vhappenh         ###   ########.fr       */
+/*   Updated: 2023/11/28 18:40:50 by vhappenh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,6 +146,7 @@ std::vector<unsigned int>	PmergeMe::vec_solve(char **input) {
 		temp_pair.second = -1;
 		pend.push_back(temp_pair);
 	}
+	//check for doubles here to not get rekt later
 	pend = ford_johnson(pend);
 	
 	for (svec::iterator it = pend.begin(); it < pend.end(); it++) {
@@ -276,6 +277,7 @@ std::deque<unsigned int>	PmergeMe::deq_solve(char **input) {
 		temp_pair.second = -1;
 		pend.push_back(temp_pair);
 	}
+	//check for doubles here to not get rekt later
 	pend = ford_johnson(pend);
 	
 	for (sdeq::iterator it = pend.begin(); it < pend.end(); it++) {
