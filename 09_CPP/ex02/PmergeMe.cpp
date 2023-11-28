@@ -6,7 +6,7 @@
 /*   By: vhappenh <vhappenh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 14:23:59 by vhappenh          #+#    #+#             */
-/*   Updated: 2023/11/28 11:21:30 by vhappenh         ###   ########.fr       */
+/*   Updated: 2023/11/28 12:50:35 by vhappenh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,15 +64,29 @@ static unsigned int	get_index(unsigned int nbr, svec pend) {
 	return (index);
 }
 
+static unsigned int	first_nbr(svec&main, svec pend) {
+	svec::iterator it;
+	for (it = pend.begin(); it != pend.end(); it++) {
+		if (it->first == main.begin()->second) {
+			main.insert(main.begin(), *it);
+			break ;
+		}
+	}
+	return (it->first);
+}
+
 static void	insert(svec& main, svec pend) {
 	int				count = pend.size();
 	int				jakobs_mod = 2;
 	int 			jakobs_range = 0;
 	unsigned int	high;
 	unsigned int	jakob;
+	unsigned int	first;
 
 	if (count == 0)
 		return ;
+	first = first_nbr(main, pend);
+	count--;
 	while(count) {
 		if (jakobs_range <= 0) {
 			jakobs_range = jakobsthal(jakobs_mod) - jakobsthal(jakobs_mod - 1);
@@ -80,6 +94,13 @@ static void	insert(svec& main, svec pend) {
 		}
 		if (jakob >= pend.size())
 			jakob = pend.size() - 1;
+		if (pend.at(jakob).first == first) {
+			jakobs_range--;
+			if (jakobs_range <= 0)
+				jakobs_mod++;
+			jakob--;
+			continue;
+		}
 		high = get_index(pend.at(jakob).first, main);
 		binary_insertion(main, pend.at(jakob), high);
 		jakobs_range--;
@@ -169,15 +190,29 @@ static unsigned int	get_index(unsigned int nbr, sdeq pend) {
 	return (index);
 }
 
+static unsigned int	first_nbr(sdeq&main, sdeq pend) {
+	sdeq::iterator it;
+	for (it = pend.begin(); it != pend.end(); it++) {
+		if (it->first == main.begin()->second) {
+			main.insert(main.begin(), *it);
+			break ;
+		}
+	}
+	return (it->first);
+}
+
 static void	insert(sdeq& main, sdeq pend) {
 	int				count = pend.size();
 	int				jakobs_mod = 2;
 	int 			jakobs_range = 0;
 	unsigned int	high;
 	unsigned int	jakob;
+	unsigned int	first;
 
 	if (count == 0)
 		return ;
+	first = first_nbr(main, pend);
+	count--;
 	while(count) {
 		if (jakobs_range <= 0) {
 			jakobs_range = jakobsthal(jakobs_mod) - jakobsthal(jakobs_mod - 1);
@@ -185,6 +220,13 @@ static void	insert(sdeq& main, sdeq pend) {
 		}
 		if (jakob >= pend.size())
 			jakob = pend.size() - 1;
+		if (pend.at(jakob).first == first) {
+			jakobs_range--;
+			if (jakobs_range <= 0)
+				jakobs_mod++;
+			jakob--;
+			continue;
+		}
 		high = get_index(pend.at(jakob).first, main);
 		binary_insertion(main, pend.at(jakob), high);
 		jakobs_range--;
@@ -200,20 +242,24 @@ static sdeq	ford_johnson(sdeq pend) {
 	
 	if (pend.size() < 2)
 		return (pend);
-	for (sdeq::iterator it = pend.begin(); it != pend.end(); it++) {
+	for (sdeq::iterator it = pend.begin(); it != pend.end();) {
 		spair tmp;
 		if ((it + 1) != pend.end() && it->first > (it + 1)->first) {
 			tmp.first = it->first;
 			tmp.second = (it + 1)->first;
 			main.push_back(tmp);
 			pend.erase(it);
+			it++;
 		}
 		else if ((it + 1) != pend.end()) {
 			tmp.first = (it + 1)->first;
 			tmp.second = it->first;
 			main.push_back(tmp);
 			pend.erase((it + 1));
+			it++;
 		}
+		if (it != pend.end())
+			it++;
 	}
 	main = ford_johnson(main);
 	insert(main, pend);
